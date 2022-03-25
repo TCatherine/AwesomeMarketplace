@@ -15,16 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 
-from .views import RegisterView, ChangePasswordView, UpdateProfileView
+from . import views
 
 urlpatterns = [
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('register/', RegisterView.as_view(), name='auth_register'),
+    path('get-code/', views.obtain_code_token, name='get-code'),
+    path('login/', views.obtain_auth_token, name='auth'),
+    path('login/refresh/', views.refresh_auth_token, name='refresh'),
+    path('register/', views.RegisterView.as_view(), name='auth_register'),
+    path('verify/', views.verify_auth_token, name='verify'),
     # We use user id (primary key) to change its password, and so to use this option in client side
     # we should take user id from user JWT token
-    path('change_password/<int:pk>/', ChangePasswordView.as_view(), name='auth_change_password'),
-    path('update_profile/<int:pk>/', UpdateProfileView.as_view(), name='auth_update_profile'),
+    path('change_password/<int:pk>/', views.ChangePasswordView.as_view(), name='auth_change_password'),
+    path('update_profile/<int:pk>/', views.UpdateProfileView.as_view(), name='auth_update_profile'),
 ]
