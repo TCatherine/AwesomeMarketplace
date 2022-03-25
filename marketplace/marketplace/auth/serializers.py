@@ -214,8 +214,10 @@ class TokenObtainSerializer(serializers.Serializer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields["code_token"] = serializers.CharField()
-        self.fields["code"] = serializers.CharField()
+        self.fields["code_token"] = serializers.CharField(required=False)
+        self.fields["code"] = serializers.CharField(required=False)
+        self.fields["username"] = serializers.CharField(required=False)
+        self.fields["password"] = serializers.CharField(required=False)
 
     def _get_user(self, username):
         user_model = get_user_model()
@@ -265,8 +267,32 @@ class TokenObtainPairSerializer(TokenObtainSerializer):
     def get_token(cls, user):
         return RefreshToken.for_user(user)
 
+    def _authenticate_no2fa(self, attrs):
+        credentials = {
+            'username': attrs.get('username'),
+            'password': attrs.get('password'),
+        }
+        user = authenticate(**credentials)
+        if not user:
+            raise exceptions.AuthenticationFailed()
+        check_user_validity(user)
+        return user
+
     def validate(self, attrs):
-        data = super().validate(attrs)
+        # If 2fa enabled, then api expect code_token and code fields to pass in json object
+        # else - username and password
+        if "code" in attrs and "code_token" in attrs:
+            data = super().validate(attrs)
+        elif "username" in attrs and "password" in attrs:
+            if not User.objects.get(username=attrs["username"]).is_2fa_enabled:
+                self.user = self._authenticate_no2fa(attrs)
+                data = {}
+            else:
+                raise serializers.ValidationError({"2fa": "2fa enabled, code and code_token should be passed"})
+        else:
+            raise serializers.ValidationError({"login": \
+                                                   "If 2fa enabled - pass code and code_token to this request"
+                                                   "else pass username and password"})
 
         refresh = self.get_token(self.user)
 
