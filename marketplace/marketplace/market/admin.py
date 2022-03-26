@@ -1,7 +1,12 @@
 from django.contrib import admin
-from .models import CustomUser
+from .models import CustomUser, SellableObject
 from .forms import CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin
+
+
+@admin.register(SellableObject)
+class SellableObjectAdmin(admin.ModelAdmin):
+    pass
 
 
 class CustomUserAdmin(UserAdmin):
