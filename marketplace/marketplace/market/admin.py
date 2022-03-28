@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, MusicObject, ImageObject
+from .models import CustomUser, MusicObject, ImageObject, SellableObject
 from .forms import CustomUserCreationForm, MusicObjectForm, ImageObjectForm
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.admin import ModelAdmin
