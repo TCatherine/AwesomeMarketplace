@@ -6,7 +6,6 @@ from django.contrib.admin import ModelAdmin
 from django.db import models
 from django import forms
 
-
 @admin.register(SellableObject)
 class SellableObjectAdmin(admin.ModelAdmin):
     pass
