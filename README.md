@@ -10,13 +10,31 @@ First you need install python requirements for server-side project:
 pip install -r requirements.txt
 ```
 
-To run existing server write following from root  repository folder (Windows style slashes):
+
+Next you need migrate all models into current database before run server.
 
 ```commandline
-python .\marketplace\manage.py
+python .\marketplace\manage.py makemigrations
+python .\marketplace\manage.py migrate
 ```
 
-For now there is no user interface provided, 
-but you can access server-side authorization api via requests.
 
-TODO: add api reference.
+Create superuser (admin) to log into admin pannel and create users and objects. Enter username and password and after running server you can log into admin pannel with this credentials.
+
+```commandline
+python .\marketplace\manage.py createsuperuser
+```
+
+
+To run test server write following:
+
+```commandline
+python .\marketplace\manage.py runserver
+```
+
+Next you can log into admin pannel and create objects, open [admin page](http://127.0.0.1:8000/admin/) in your browser and work on your own.
+
+
+## Documentation
+
+In doc folder you can find swagger api reference and postman collection file for testing existing api.

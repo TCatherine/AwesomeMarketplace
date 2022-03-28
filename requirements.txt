@@ -1,5 +1,9 @@
 Django==4.0.3
 djangorestframework==3.13.1
-pyjwt~=2.0.0
+pyjwt~=1.7.1
 djangorestframework-jwt~=1.11.0
-Pillow==9.0.1
+requests~=2.27.1
+flask~=2.0.3
+celery~=5.2.3
+redis~=4.2.0
+eventlet~=0.33.0

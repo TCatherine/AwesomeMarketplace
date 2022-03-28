@@ -1,0 +1,303 @@
+openapi: 3.0.0
+info:
+  title: '[Auth] Get tokens with 2fa'
+  description: |-
+    # Introduction
+    What does your API do?
+
+    # Overview
+    Things that the developers should know about
+
+    # Authentication
+    What is the preferred way of using the API?
+
+    # Error Codes
+    What errors and status codes can a user expect?
+
+    # Rate limit
+    Is there a limit to the number of requests a user can send?
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+components:
+  securitySchemes:
+    # noauthAuth:
+    #   type: http
+    #   scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+tags:
+  - name: Get tokens 2fa
+  - name: Get tokens without 2fa
+paths:
+  /auth/get-code/:
+    post:
+      tags:
+        - Get tokens 2fa
+      summary: Get code token for 2fa and send code to email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: '{{username}}'
+                password:
+                  type: string
+                  example: '{{password}}'
+      responses:
+        '200':
+          description: OK
+          content:
+            application'json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: '{{2fa code-token to send to server along with email code}}'
+        '401':
+          description: Unauthorized
+          content:
+            application'json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: 'Incorrect authentication credentials.'
+  /auth/login/ <- [if 2fa enabled]:
+    post:
+      tags:
+        - Get tokens 2fa
+      summary: Get JWT token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code_token:
+                  type: string
+                  example: '{{code-token value from previous request}}'
+                code:
+                  type: string
+                  example: '{{code from email}}'
+      responses:
+        '200':
+          description: OK
+          content:
+            application'json:
+              schema:
+                type: object
+                properties:
+                  refresh:
+                    type: string
+                    example: '{{refresh jwt token}}'
+                  access:
+                    type: string
+                    example: '{{access jwt token}}'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: 'Incorrect authentication credentials.'
+        '500':
+          description: Internal server error - occures when you pass expired token
+  /auth/login/ <- [if 2fa disabled]:
+    post:
+      tags:
+        - Get tokens without 2fa
+      summary: Get JWT token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: '{{username}}'
+                password:
+                  type: string
+                  example: '{{password}}'
+      responses:
+        '200':
+          description: OK
+          content:
+            application'json:
+              schema:
+                type: object
+                properties:
+                  refresh:
+                    type: string
+                    example: '{{refresh jwt token}}'
+                  access:
+                    type: string
+                    example: '{{access jwt token}}'
+        '400':
+          description: Bad request - occures when try to authenticate user with 2fa  with login and password.
+          content:
+            application'json:
+              schema:
+                type: object
+                properties:
+                  2fa:
+                    type: array
+                    items:
+                      type: string
+                      example: '2fa enabled, code and code_token should be passed'
+  /auth/register/:
+    post:
+      tags:
+        - default
+      summary: Create new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: '{{username}}'
+                password:
+                  type: string
+                  example: '{{password}}'
+                password2:
+                  type: string
+                  example: '{{password}}'
+                email:
+                  type: string
+                  example: '{{email}}'
+                first_name:
+                  type: integer
+                  example: '1'
+                last_name:
+                  type: integer
+                  example: '2'
+      responses:
+        '200':
+          description: Successful response - mirroring request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    example: '{{username}}'
+                  password:
+                    type: string
+                    example: '{{password}}'
+                  password2:
+                    type: string
+                    example: '{{password}}'
+                  email:
+                    type: string
+                    example: '{{email}}'
+                  first_name:
+                    type: integer
+                    example: '1'
+                  last_name:
+                    type: integer
+                    example: '2'
+        '400':
+          description: Bad Request - some king of error, passed along with response
+  /auth/login/refresh/:
+    post:
+      tags:
+        - default
+      summary: Refresh JWT token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh:
+                  type: string
+                  example: '{{refresh-token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/change_password/{user_id}/:
+    put:
+      tags:
+        - default
+      summary: Change user password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: '{{new password}}'
+                password2:
+                  type: string
+                  example: '{{new password repeat}}'
+                old_password:
+                  type: string
+                  example: '{{old password}}'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/update_profile/{user_id}/:
+    put:
+      tags:
+        - default
+      summary: Change user profile data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: '{{username}}'
+                first_name:
+                  type: integer
+                  example: '1'
+                last_name:
+                  type: integer
+                  example: '2'
+                email:
+                  type: string
+                  example: '{{email}}'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

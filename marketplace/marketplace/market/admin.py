@@ -7,6 +7,11 @@ from django.db import models
 from django import forms
 
 
+@admin.register(SellableObject)
+class SellableObjectAdmin(admin.ModelAdmin):
+    pass
+
+
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     add_form = CustomUserCreationForm
