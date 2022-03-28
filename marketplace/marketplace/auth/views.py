@@ -11,7 +11,6 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework_simplejwt import views as jwt_views
 
-
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
@@ -26,7 +25,7 @@ class ChangePasswordView(generics.UpdateAPIView):
 
 class UpdateProfileView(generics.UpdateAPIView):
     queryset = User.objects.all()
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     serializer_class = serializers.UpdateUserSerializer
 
 
