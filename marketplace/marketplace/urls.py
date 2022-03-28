@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('marketplace.auth.urls')),
     path('market/', include('marketplace.market.urls')),
+    # TEST URL FOR TESTING CELERY TASKS
+    path('blockchain/', include('marketplace.blockchain.urls')),
 ]

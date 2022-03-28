@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractUser
 # Every object has its url, description, price, or something
 # TODO: implement necessary objects
 class SellableObject(models.Model):
-    pass
+    name = models.CharField(max_length=30, default='no name')
 
 
 class CustomUser(AbstractUser):

@@ -13,7 +13,7 @@ class Transaction(models.Model):
     buyer = models.ForeignKey(User, on_delete=models.PROTECT, related_name='User_buyer')
     seller = models.ForeignKey(User, on_delete=models.PROTECT, related_name='User_seller')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    item_id = models.ForeignKey(SellableObject, on_delete=models.PROTECT, related_name='SellableObject_item')
+    item = models.ForeignKey(SellableObject, on_delete=models.PROTECT, related_name='SellableObject_item')
 
 
 class ConfirmedTransaction(models.Model):
@@ -21,4 +21,4 @@ class ConfirmedTransaction(models.Model):
     buyer = models.CharField(max_length=100)
     seller = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    item_id = models.ForeignKey(SellableObject, on_delete=models.CASCADE)
+    item = models.ForeignKey(SellableObject, on_delete=models.CASCADE)
