@@ -4,6 +4,20 @@ from django.http import HttpResponse
 from ..market.models import CustomUser as User
 from ..market.models import SellableObject
 
+import requests
+
+
+class GetChainView(APIView):
+
+    def get(self, request):
+        r = requests.get(
+            "http://localhost:5000/chain"
+        )
+        if r.status_code != 200:
+            raise ValueError("Error occures while getting chain")
+
+        return HttpResponse(r.content)
+
 
 # TEST
 class Test(APIView):
