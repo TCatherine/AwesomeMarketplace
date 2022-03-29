@@ -49,5 +49,6 @@ def confirm_transaction(result_ta_id, buyer, seller, amount, item):
     seller = User.objects.get(pk=seller)
     amount = Decimal(amount)
     item = SellableObject.objects.get(pk=item)
+    item.owner = buyer
     ta = ConfirmedTransaction(buyer=buyer, seller=seller, amount=amount, item=item)
     ta.save()

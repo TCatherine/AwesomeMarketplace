@@ -35,6 +35,13 @@ python .\marketplace\manage.py runserver
 Next you can log into admin pannel and create objects, open [admin page](http://127.0.0.1:8000/admin/) in your browser and work on your own.
 
 
+HOWTO: run celery
+
+```commandline
+celery --app blockchain worker --pool=solo
+```
+
+
 ## Documentation
 
 In doc folder you can find swagger api reference and postman collection file for testing existing api.
