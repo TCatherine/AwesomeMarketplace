@@ -6,7 +6,6 @@ from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from rest_framework import exceptions
 from rest_framework.validators import UniqueValidator
-from rest_framework_jwt.settings import api_settings as jwt_settings
 from rest_framework_simplejwt.serializers import PasswordField
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken, SlidingToken
@@ -15,10 +14,6 @@ from .token_manager import CodeTokenManager
 from .utils import check_user_validity
 
 from rest_framework import serializers
-
-
-jwt_encode_handler = jwt_settings.JWT_ENCODE_HANDLER
-jwt_payload_handler = jwt_settings.JWT_PAYLOAD_HANDLER
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -200,8 +195,8 @@ class AuthTokenSerializer(Jwt2faSerializer):
         return user
 
     def _create_token(self, user):
-        payload = jwt_payload_handler(user)
-        return jwt_encode_handler(payload)
+        token = RefreshToken.for_user(user)
+        return str(token.access_token)
 
 
 class TokenObtainSerializer(serializers.Serializer):
