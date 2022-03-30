@@ -1,8 +1,46 @@
+
 # AwesomeWebMarketplace
 
+## Getting started with Docker
+
+### Install docker (Windows/Linux)
+
+https://www.docker.com/products/docker-desktop/
+
+On Windows docker works under wsl (recommended) or hyper-v (both built-in Windows 10). You can change it in the settings of Docker desktop.
+
+\*Install docker-compose additionally if not installed automatically  (for Linux, for windows installed automatically with Docker desktop application)
+
+### Run containers
+
+To build containers execute next commands from root project folder (where docker-compose.yml places):
+
+```commandline
+docker-compose build
+```
+
+To run after building (-d (detached) option let you run without output - not recommended, cause you migth see some outputs and errors if occures).
+
+```commandline
+docker-compose up [-d]
+```
+
+Image takes about 10-30 seconds to run and then you can interact with server functionality. \\
+
+You also can run in detached mode and check outputs if errors occures with below:
+
+```commandline
+docker-compose logs [-f]
+```
+
+To shutdown containers:
+
+```commandline
+docker-compose down
+```
 
 
-## Getting started
+## Getting started manually (DEPRECATED)
 
 First you need install python requirements for server-side project:
 
