@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  web:
+    image: awesomeproject
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./marketplace/:/usr/src/marketplace/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    # links:
+      # - redis
+      # - blockchain
+    depends_on:
+      - redis
+      - migrations
+      - blockchain
+
+  migrations:
+    build: ./marketplace
+    image: awesomeproject
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput"
+    volumes:
+      - ./marketplace/:/usr/src/marketplace/
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - redis
+
+  blockchain:
+    build: ./blockchain
+    image: awesomeblockchain
+    command: sh -c "python blockchain.py --port 5000"
+    volumes: 
+      - ./blockchain/:/usr/src/blockchain/
+
+  redis:
+    image: redis
+
+  celery:
+    image: awesomeproject
+    command: sh -c "cd marketplace && celery --app blockchain worker --pool=eventlet &"
+    volumes:
+      - ./marketplace/:/usr/src/marketplace/
+    # links:
+      # - redis
+      # - awesomeblockchain
+    depends_on:
+      - redis
+      - web

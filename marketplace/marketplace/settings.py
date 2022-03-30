@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-
+import os
 
 # For JWT Auth purposes
 REST_FRAMEWORK = {
@@ -155,7 +155,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Celery and redis settings
-REDIS_HOST = 'localhost'
+REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
 REDIS_PORT = '6379'
 BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
