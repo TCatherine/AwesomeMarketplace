@@ -10,11 +10,9 @@ services:
       - 8000:8000
     env_file:
       - ./.env.dev
-    # links:
-      # - redis
-      # - blockchain
     depends_on:
       - redis
+      - celery
       - migrations
       - blockchain
 
@@ -33,6 +31,8 @@ services:
     build: ./blockchain
     image: awesomeblockchain
     command: sh -c "python blockchain.py --port 5000"
+    env_file:
+      - ./.env.dev
     volumes: 
       - ./blockchain/:/usr/src/blockchain/
 
@@ -41,12 +41,10 @@ services:
 
   celery:
     image: awesomeproject
-    command: sh -c "cd marketplace && celery --app blockchain worker --pool=eventlet &"
+    command: sh -c "cd marketplace && celery --app blockchain worker --pool=solo"
     volumes:
       - ./marketplace/:/usr/src/marketplace/
-    # links:
-      # - redis
-      # - awesomeblockchain
+    env_file:
+      - ./.env.dev
     depends_on:
       - redis
-      - web
