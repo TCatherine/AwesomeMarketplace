@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect
+
 from .serializers import ImageObjectSerializer
 from .models import ImageObject
 from django.http import JsonResponse
@@ -20,8 +22,10 @@ class SetImageObjectView(APIView):
         object.save()
         return HttpResponse("Image successfully created!")
 
+
 class ShowImageObjectView(APIView):
     permission_classes = (AllowAny,)
+
     def get(self, request, pk=None):
         try:
             image = ImageObject.objects.get(id=pk)
@@ -30,14 +34,21 @@ class ShowImageObjectView(APIView):
 
         return JsonResponse(ImageObjectSerializer.serialize_order(image))
 
+
 class ShowImageCatalogView(APIView):
     permission_classes = (AllowAny,)
+
     def get(self, request, pk=None):
+        # TODO: start and end pk is good idea, but we need to return image somehow
+        # TODO: Do we really need ShowImageObjectView method? It does the same job as this view...
+        # TODO: Think about how to access images
+        # TODO: Mb front will return back [start;end] range of images and ShowImageObjectView will return bitmap??
+        # TODO: And then refactor we need to refactor ShowImageObjectView
         start_pk = int(request.data['start pk'])
         end_pk = int(request.data['end pk'])
         images_list = []
         try:
-            for pk in range(start_pk, end_pk+1):
+            for pk in range(start_pk, end_pk + 1):
                 image = ImageObject.objects.get(id=pk)
                 images_list.append(ImageObjectSerializer.serialize_order(image))
         except:
@@ -45,14 +56,18 @@ class ShowImageCatalogView(APIView):
 
         return JsonResponse({'objects': images_list})
 
+
 class DealView(APIView):
     permission_classes = (IsAuthenticated,)
-    def get(self, request, pk):
-        image = ImageObject.objects.get(id=pk)
-        transaсtion_input = {
-            'id product': pk,
-            'owner': image.owner,
-            'customer': request.user
-        }
-        return HttpResponse("Deal successfully done!")
 
+    def get(self, request, pk):
+        # redirect to view from blockchain app
+        return redirect('do deal', pk=pk)
+
+
+class UserTransactionsView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, pk):
+        # redirect to view from blockchain app
+        return redirect('get user transactions', pk=pk)

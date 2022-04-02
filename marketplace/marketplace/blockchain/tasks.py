@@ -16,9 +16,10 @@ def create_transaction(buyer, seller, amount, item_id):
     buyer = User.objects.get(pk=buyer)
     seller = User.objects.get(pk=seller)
     amount = Decimal(amount)
-    item_id = SellableObject.objects.get(pk=item_id)
-    ta = Transaction(buyer=buyer, seller=seller, amount=amount, item=item_id)
-    ta.save()
+    item = SellableObject.objects.get(pk=item_id)
+    ta = Transaction(buyer=buyer, seller=seller, amount=amount, item=item)
+    buyer.balance -= item.price
+    seller.balance += item.price
     try:  # try to get block with transaction
         r = requests.post(
             "http://" + settings.BLOCKCHAIN_HOST + ":5000/transactions/new",
@@ -26,7 +27,7 @@ def create_transaction(buyer, seller, amount, item_id):
                 "sender": buyer.username,
                 "recipient": seller.username,
                 "amount": str(amount),
-                "item": str(item_id.id)
+                "item": str(item.id)
             }
         )
         if r.status_code != 201:
@@ -36,9 +37,11 @@ def create_transaction(buyer, seller, amount, item_id):
         if r.status_code != 200:
             raise ValueError("Mining block error")
     except Exception as e:
-        ta.delete()
         raise Exception
 
+    ta.save()
+    buyer.save(update_fields=['balance'])
+    seller.save(update_fields=['balance'])
     return ta.id
 
 
@@ -47,7 +50,8 @@ def confirm_transaction(ta_id):
     ta = Transaction.objects.get(pk=ta_id)
     item = SellableObject.objects.get(pk=ta.item.id)
     item.owner = ta.buyer
+    item.is_sale = False
     cta = ConfirmedTransaction(buyer=ta.buyer.id, seller=ta.seller.id, amount=ta.amount, item=ta.item)
-    item.save(update_fields=['owner'])
+    item.save(update_fields=['owner', 'is_sale'])
     cta.save()
     ta.delete()

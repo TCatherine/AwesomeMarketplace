@@ -259,6 +259,17 @@ def full_chain():
     return jsonify(response), 200
 
 
+@app.route('/chain/<user_name>', methods=['GET'])
+def user_chain(user_name):
+    user_chain = [block for block in blockchain.chain if any(tr['sender'] == str(user_name) or tr['recipient'] == str(user_name) for tr in block['transactions'])]
+
+    response = {
+        'transactions': user_chain,
+        'length': len(user_chain),
+    }
+    return jsonify(response), 200
+
+
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
     values = request.get_json()

@@ -21,7 +21,7 @@ class ImageObjectSerializer(serializers.HyperlinkedModelSerializer):
             'last_updated': order.last_updated,
             'price': order.price,
             'object': str(order.object),
-            'owner': order.owner,
+            'owner': order.owner.id,
             'is_sale': order.is_sale
         }
 

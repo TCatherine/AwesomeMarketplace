@@ -20,6 +20,7 @@ class CustomUserAdmin(UserAdmin):
             '2FA enabled', {
                 'fields': (
                     'is_2fa_enabled',
+                    'balance',
                 )
             }
         )

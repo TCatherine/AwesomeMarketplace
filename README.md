@@ -33,7 +33,13 @@ You also can run in detached mode and check outputs if errors occures with below
 docker-compose logs [-f]
 ```
 
-To shutdown containers:
+Or together:
+
+```commandline
+docker-compose up -d && docker-compose logs -f
+```
+
+Then you need to shutdown containers:
 
 ```commandline
 docker-compose down

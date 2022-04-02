@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     # for manual testing of working blockchain via test view and test post request
-    path('test/', views.Test.as_view(), name='test view'),
-    path('get-chain/', views.GetChainView.as_view(), name='get block chain view'),
+    path('deal/<int:pk>/', views.DealView.as_view(), name='do deal'),
+    path('get-chain/', views.GetChainView.as_view(), name='get blockchain'),
+    path('get-user-transactions/<int:pk>/', views.GetUserTransactions.as_view(), name='get user transactions'),
 ]
