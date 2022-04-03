@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import CustomUser, MusicObject, ImageObject
-from .forms import CustomUserCreationForm, MusicObjectForm, ImageObjectForm
+from .models import CustomUser, ImageObject, SellableObject
+from .forms import CustomUserCreationForm, ImageObjectForm
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.admin import ModelAdmin
 from django.db import models
