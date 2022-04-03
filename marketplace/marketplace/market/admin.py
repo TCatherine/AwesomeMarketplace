@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import CustomUser, MusicObject, ImageObject, SellableObject
-from .forms import CustomUserCreationForm, MusicObjectForm, ImageObjectForm
+from .models import CustomUser, ImageObject, SellableObject
+from .forms import CustomUserCreationForm, ImageObjectForm
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.admin import ModelAdmin
 from django.db import models
@@ -31,13 +31,5 @@ class ImageObjectAdmin(ModelAdmin):
     add_form = ImageObjectForm
 
 
-
-class MusicObjectAdmin(ModelAdmin):
-    model = MusicObject
-    add_form = MusicObjectForm
-
-
-
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(ImageObject, ImageObjectAdmin)
-admin.site.register(MusicObject, MusicObjectAdmin)

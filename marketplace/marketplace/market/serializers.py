@@ -1,33 +1,47 @@
 from rest_framework import serializers
-from .models import ImageObject, MusicObject
+from .models import ImageObject
 
 from rest_framework.test import APIRequestFactory
 
-factory = APIRequestFactory()
-request = factory.get('/')
+from django.http import JsonResponse
 
+class ShowPublicImageObjectSerializer(serializers.ModelSerializer):
+    # public_image = serializers.SerializerMethodField()
 
-class ImageObjectSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ImageObject
         fields = ['id', 'name', 'creation_date', 'last_updated',
-                  'price', 'owner', 'object', 'is_sale']
-    @staticmethod
-    def serialize_order(order):
-        print(order)
-        return {
-            'name': order.name,
-            'creation_date': order.creation_date,
-            'last_updated': order.last_updated,
-            'price': order.price,
-            'object': str(order.object),
-            'owner': order.owner.id,
-            'is_sale': order.is_sale
-        }
+                  'price', 'owner', 'public_image', 'is_sale']
 
+class ShowPrivateImageObjectSerializer(serializers.ModelSerializer):
+    # public_image = serializers.SerializerMethodField()
 
-class MusicObjectSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = MusicObject
+        model = ImageObject
         fields = ['id', 'name', 'creation_date', 'last_updated',
-                  'price', 'owner', 'object', 'is_sale']
+                  'price', 'owner', 'public_image', 'private_image', 'is_sale']
+
+
+class SetImageObjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageObject
+        fields = ['id', 'name', 'creation_date', 'last_updated',
+                  'price', 'owner', 'public_image', 'private_image', 'is_sale']
+
+    def validate(self, attrs):
+        return attrs
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        data = self.context['request'].data
+        object = ImageObject.objects.create(
+            name=data['name'],
+            public_image=data['public image'],
+            private_image=data['private image'],
+            price=data['price'],
+            owner=user,
+            is_sale=False if (data['is_sale']) == "False" else True
+        )
+
+        object.save()
+        return object

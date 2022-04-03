@@ -13,8 +13,3 @@ class ImageObjectForm(forms.Form):
     class Meta:
         model = models.Model
         fields = '__all__'
-
-class MusicObjectForm(forms.Form):
-    class Meta:
-        model = models.Model
-        fields = '__all__'
