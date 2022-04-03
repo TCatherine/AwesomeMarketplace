@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 class CustomUser(AbstractUser):
     is_2fa_enabled = models.BooleanField(default=False)
@@ -18,15 +19,9 @@ class SellableObject(models.Model):
 
 
 class ImageObject(SellableObject):
-    object = models.ImageField(upload_to='store/images/', null=True)
+    public_image = models.ImageField(upload_to=f'{settings.MEDIA_ROOT}public_images/', null=True, max_length=300)
+    private_image = models.ImageField(upload_to=f'{settings.MEDIA_ROOT}private_images/', null=True, max_length=300)
 
     class Meta:
         db_table = 'Images'
-
-class MusicObject(SellableObject):
-    object = models.FileField(upload_to ='store/music/', null=True)
-
-    class Meta:
-        db_table = 'Music'
-
 
