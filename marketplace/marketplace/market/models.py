@@ -19,8 +19,8 @@ class SellableObject(models.Model):
 
 
 class ImageObject(SellableObject):
-    public_image = models.ImageField(upload_to=f'{settings.MEDIA_ROOT}public_images/', null=True, max_length=300)
-    private_image = models.ImageField(upload_to=f'{settings.MEDIA_ROOT}private_images/', null=True, max_length=300)
+    public_image = models.ImageField(upload_to='public_images/', null=True, max_length=300)
+    private_image = models.ImageField(upload_to='private_images/', null=True, max_length=300)
 
     class Meta:
         db_table = 'Images'
