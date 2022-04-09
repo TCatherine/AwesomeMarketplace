@@ -6,7 +6,8 @@ from rest_framework import generics
 from .models import ImageObject
 
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import SetImageObjectSerializer, ShowPublicImageObjectSerializer, ShowPrivateImageObjectSerializer
+from .serializers import SetImageObjectSerializer, ShowPublicImageObjectSerializer, \
+    ShowPrivateImageObjectSerializer, ChangeStatusSerializer
 
 
 class SetImageObjectView(generics.CreateAPIView):
@@ -41,6 +42,12 @@ class ShowPrivateImageCatalogView(APIView):
             return JsonResponse({'objects': 'Error'})
         images_list = [ShowPrivateImageObjectSerializer(im, context={'request': request}).data for im in images]
         return JsonResponse({'objects': images_list})
+
+class ChangeStatusView(generics.UpdateAPIView):
+    queryset = ImageObject.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ChangeStatusSerializer
+
 
 class DealView(APIView):
     permission_classes = (IsAuthenticated,)

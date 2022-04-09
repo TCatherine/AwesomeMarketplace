@@ -45,3 +45,22 @@ class SetImageObjectSerializer(serializers.ModelSerializer):
 
         object.save()
         return object
+
+class ChangeStatusSerializer(serializers.ModelSerializer):
+    is_sale = serializers.BooleanField(default=False)
+    class Meta:
+        model = ImageObject
+        fields = ['id', 'is_sale']
+
+    def validate(self, attrs):
+        return attrs
+
+    def update(self, instance, validated_data):
+        user = self.context['request'].user
+        if instance.owner.id != user.id:
+            raise serializers.ValidationError({"owner": "User isn't owner"})
+
+        instance.is_sale = validated_data.get('is_sale', instance.is_sale)
+        instance.save()
+        return instance
+
