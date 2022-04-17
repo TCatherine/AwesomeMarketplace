@@ -1,0 +1,116 @@
+.to-sign-in {
+    position: center;
+    bottom: 5%;
+
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 100%;
+    line-height: 100%;
+    text-align: center;
+    
+
+    color: #FFFFFF;
+}
+
+.buttom-signup {
+    position: absolute;
+    top: 76%;
+    left: 35%;
+    right: 35%;
+    
+    width: 30%;
+    height: 8%;
+    background: #FFFFFF;
+    border: 2px solid #FF0000;
+    border-radius: 10px; 
+    box-sizing: border-box;
+    }
+    
+.buttom-name-signup {
+    position: center;
+    font-family: 'Nexa';
+    font-style: normal;
+    line-height: 50%;
+
+    color: #FF0000;
+}
+
+.username-signup {
+
+    position: absolute;
+    width: 93%;
+    height: 10%;
+    left: 3%;
+    right: 3%;
+    top: 25%;
+    
+    }
+    
+.password-signup {
+    position: absolute;
+    width: 93%;
+    height: 10%;
+    left: 3%;
+    right: 3%;
+    top: 40%;    
+}
+
+.name-signin {
+    /* Username */
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 100%;
+    font-size: 100%;
+    line-height: 100%;
+    
+    color: #FFFFFF;
+    }
+    
+.form-control-signup{
+/* Rectangle 4 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+bottom: 15%;
+height: 45%;
+
+background: #FFFFFF;
+border: 2px solid #FF0000;
+
+border-radius: 5px; 
+
+font-size: 75%;
+line-height: 100%;
+font-weight: 10;
+color: #16456B;
+}
+
+.form-control-signup::placeholder{
+    text-align: center;
+    font-size: 100%;
+    line-height: 100%;
+}
+
+.to-sign-up {
+    position: absolute;
+    left: 20.02%;
+    right: 20.41%;
+    bottom: 8%;
+
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 40;
+    font-size: 60%;
+    line-height: 50%;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+

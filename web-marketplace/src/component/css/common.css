@@ -1,0 +1,61 @@
+.form {
+    position: absolute;
+    left: 20.73%;
+    right: 30.1%;
+    top: 12.87%;
+    bottom: 3.06%;
+    
+    background: rgba(24, 72, 112, 0.9);
+    border: 4px solid #FF0606;
+    border-radius: 50px;
+    }
+    
+.welcome {
+/* Welcome to Marketplace */
+position: absolute;
+left: 6.77%;
+right: 9.01%;
+top: 10.19%;
+
+font-family: 'Nexa';
+font-style: normal;
+font-weight: 100%;
+font-size: 100%;
+line-height: 100%;
+text-align: center;
+color: #FFFFFF;
+}
+
+.error-total {
+    position: absolute;
+    top: 85%;
+    left: 25%;
+    right: 50%;
+
+    width: 30%;
+    
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 100%;
+    font-size: 80%;
+    line-height: 80%;
+    
+    color: #FF0000;
+
+}
+
+.error {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 100%;
+    
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 50%;
+    font-size: 60%;
+    line-height: 50%;
+    
+    color: #FF0000;
+    
+}
