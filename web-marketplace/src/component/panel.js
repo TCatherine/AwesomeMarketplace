@@ -12,7 +12,7 @@ export default class Home extends Component {
               <div>
                 <ul>
                   <li className='sign-in'>
-                    <a href='' className='link'>sign in</a>
+                  <Link to={'/login'} className='link'>sign in</Link>
                   </li>
                   <li className='sign-up'>
                     <Link to={'/register'} className='link'>sign up</Link>

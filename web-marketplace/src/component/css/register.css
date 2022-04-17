@@ -1,30 +1,3 @@
-.form {
-position: absolute;
-left: 20.73%;
-right: 30.1%;
-top: 12.87%;
-bottom: 3.06%;
-
-background: rgba(24, 72, 112, 0.9);
-border: 4px solid #FF0606;
-border-radius: 50px;
-}
-
-.welcome {
-/* Welcome to Marketplace */
-position: absolute;
-left: 6.77%;
-right: 9.01%;
-top: 10.19%;
-
-font-family: 'Nexa';
-font-style: normal;
-font-weight: 100%;
-font-size: 100%;
-line-height: 100%;
-text-align: center;
-color: #FFFFFF;
-}
 
 .name {
 /* Username */
@@ -48,7 +21,7 @@ color: #FFFFFF;
 position: absolute;
 left: 0%;
 right: 0%;
-bottom: 0%;
+bottom: 15%;
 height: 50%;
 
 background: #FFFFFF;
@@ -169,3 +142,4 @@ box-sizing: border-box;
     text-decoration: none; 
     color: #FFFFFF;
 }
+
