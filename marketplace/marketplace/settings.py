@@ -151,12 +151,13 @@ MEDIA_URL = '/store/'
 # this is test setting, send mail to console where django was run
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # set all of this in production
+# UNCOMMENT THIS TILL THE `EMAIL_HOST_PASSWORD` TO USE REAL EMAIL MESSAGES
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = "smtp.gmail.com"
 # EMAIL_USE_TLS = True
 # EMAIL_PORT = 587
-# EMAIL_HOST_USER = "<my mail>@gmail.com"
-# EMAIL_HOST_PASSWORD = "<my mail password>"
+# EMAIL_HOST_USER = "dev.ibks66@gmail.com"
+# EMAIL_HOST_PASSWORD = "devpassword"
 
 
 # Celery and redis settings
