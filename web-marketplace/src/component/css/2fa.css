@@ -1,0 +1,22 @@
+.code-2fa {
+position: absolute;
+width: 94%;
+height: 10%;
+top: 40%;
+left:3%;
+}
+
+.try-again {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 100%;
+    
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 50%;
+    font-size: 60%;
+    line-height: 50%;
+    
+    color: #FFFFFF;
+}
