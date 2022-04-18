@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
     path('get-code/', views.obtain_code_token, name='get-code'),
     path('login/', views.obtain_auth_token, name='auth'),
+    path('user/', views.get_user_data, name='user'),
     path('login/refresh/', views.refresh_auth_token, name='refresh'),
     path('register/', views.RegisterView.as_view(), name='auth_register'),
     path('verify/', views.verify_auth_token, name='verify'),

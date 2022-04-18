@@ -51,8 +51,8 @@
 /* SIGN IN */
 
 position: absolute;
-left: 73.54%;
-right: 20.71%;
+left: 70.54%;
+right: 23.71%;
 top: 43.94%;
 bottom: 12.12%;
 list-style-type: none;
@@ -63,20 +63,14 @@ list-style-type: none;
 /* Log On */
 
 position: absolute;
-left: 80.9%;
-right: 13.54%;
+left: 78.9%;
+right: 15.54%;
 top: 43.94%;
 bottom: 12.12%;
 list-style-type: none;
 }
 
-.user-img {
-position: absolute;
-right: 0.25%;
-top: 23.94%;
-width : 2vw;
-height: auto; /*to preserve the aspect ratio of the image*/
-}
+
 
 .name {
 position: absolute;
@@ -107,4 +101,28 @@ color: #184870;
     /* identical to box height */
 
     color: #16456B;
+}
+
+.user {
+    position: absolute;
+    right: 10%;
+    left: 90%;
+    top: 43.94%;
+    bottom: 12.12%;
+    list-style-type: none;
+
+    font-family: 'Nexa Bold';
+    font-style: normal;
+
+    color: #16456B;
+}
+
+.user-img {
+    position: absolute;
+    right: 0%;
+    left: 96%;
+    top: 10%;
+    bottom: 12.12%;
+
+    height : 3vw;
 }

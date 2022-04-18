@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './css/register.css'
 import './css/common.css'
 
 
 export default class Register extends Component {
+    state = {}
     constructor() {
         super();
         this.state = {
@@ -20,7 +21,7 @@ export default class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const data = {
+        const register_data = {
             username: this.username,
             password: this.password,
             password2: this.confirm_password,        
@@ -29,10 +30,21 @@ export default class Register extends Component {
             last_name: this.second_name
         }
 
-        axios.post('http://localhost:8000/auth/register/', data).then(
+        const login_data = {
+            username: this.username,
+            password: this.password,
+        }
+
+        axios.post('auth/register/', register_data).then(
             res => {
+
                 console.log(res)
-                // console.log(res.data)
+                axios.post('auth/get-code/', login_data).then(
+                    res => {
+                        console.log(res)
+                        localStorage.setItem('token', res.data.token);
+                        this.setState({loggedIn: true});
+                    })
             })
             .catch((error) => {
                 console.log(error.response);
@@ -51,6 +63,9 @@ export default class Register extends Component {
     }
 
     render() {
+        if (this.state.loggedIn) {
+            return <Navigate to={'/2fa'}/>;
+        }
         return (
             <form onSubmit={this.handleSubmit}>
             <div className='form'>
