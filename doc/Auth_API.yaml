@@ -91,7 +91,7 @@ paths:
         '200':
           description: OK
           content:
-            application'json:
+            application/json:
               schema:
                 type: object
                 properties:
@@ -229,9 +229,18 @@ paths:
                   example: '{{refresh-token}}'
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application'json:
+              schema:
+                type: object
+                properties:
+                  refresh:
+                    type: string
+                    example: '{{refresh jwt token}}'
+                  access:
+                    type: string
+                    example: '{{access jwt token}}'
   /auth/change_password/{user_id}/:
     put:
       tags:
@@ -303,4 +312,22 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    example: '{{username}}'
+                  first_name:
+                    type: integer
+                    example: '1'
+                  last_name:
+                    type: integer
+                    example: '2'
+                  email:
+                    type: string
+                    example: '{{email}}'
+                  is_2fa_enabled:
+                    type: boolean
+                    example: 'true/false'

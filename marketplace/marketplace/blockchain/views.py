@@ -89,19 +89,19 @@ class DealView(APIView):
             return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
         if seller_id == buyer_id:
-            return JsonResponse({'error': "Its your item, skip transaction"}, status=HTTPStatus.BAD_REQUEST)
+            return JsonResponse({'Status': "Its your item, skip transaction"}, status=HTTPStatus.BAD_REQUEST)
 
         if request.user.balance < item.price:
-            return JsonResponse({'error': "Not enough money"}, status=HTTPStatus.BAD_REQUEST)
+            return JsonResponse({'Status': "Not enough money"}, status=HTTPStatus.BAD_REQUEST)
 
         # Check if user already in transaction, don't do separate transactions at the same time
         try:
             Transaction.objects.get(buyer=request.user)
-            return JsonResponse({'error': "You can perform only one transaction at time, please wait!"},
+            return JsonResponse({'Status': "You can perform only one transaction at time, please wait!"},
                                 status=HTTPStatus.CONFLICT)
         except Transaction.DoesNotExist:
             pass
 
         create_transaction.apply_async((buyer_id, seller_id, amount, item_id),
                                        link=confirm_transaction.s())
-        return JsonResponse({'error': "Transaction initiated"}, status=HTTPStatus.OK)
+        return JsonResponse({'Status': "Transaction initiated"}, status=HTTPStatus.OK)

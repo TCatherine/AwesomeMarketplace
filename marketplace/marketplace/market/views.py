@@ -15,11 +15,11 @@ class GetPublicImageUrl(APIView):
 
     def get(self, request, pk):
         try:
-            url = ShowPublicImageObjectSerializer(ImageObject.objects.get(pk=pk)).data['public_image']
+            url = ShowPublicImageObjectSerializer(ImageObject.objects.get(pk=pk), context={'request': request}).data['public_image']
         except:
             return JsonResponse({'error': 'No such item exist'})
 
-        return JsonResponse({'image url': url})
+        return JsonResponse({'public_image': url})
 
 class SetImageObjectView(generics.CreateAPIView):
     queryset = ImageObject.objects.all()

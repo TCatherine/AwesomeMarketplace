@@ -1,0 +1,341 @@
+openapi: 3.0.0
+info:
+  title: REST API testing
+  description: |-
+    # Introduction
+    What does your API do?
+
+    # Overview
+    Things that the developers should know about
+
+    # Authentication
+    What is the preferred way of using the API?
+
+    # Error Codes
+    What errors and status codes can a user expect?
+
+    # Rate limit
+    Is there a limit to the number of requests a user can send?
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+  - url: http://127.0.0.1:8000
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+  
+paths:
+  /market/imageobject/{item id}/deal/:
+    get:
+      tags:
+        - 3 Market
+      summary: Do deal
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: item id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Status:
+                    type: string
+                    example: "Transaction initiated"
+        '403':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Status:
+                    type: string
+                    example: <Some error will be here>
+        '404':
+          description: Not found - you passes an object that does not exist
+              
+  /market/user-transactions/{user id}/:
+    get:
+      tags:
+        - 2 Blockchain
+      summary: Get transactions for given user
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Successful response - returns id of every participant and image
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        buyer:
+                          type: string
+                          example: 2
+                        seller:
+                          type: string
+                          example: 1
+                        amount:
+                          type: string
+                          example: 10
+                        item:
+                          type: string
+                          example: 6
+                        
+  /blockchain/get-last-ta-status/:
+    get:
+      tags:
+        - 2 Blockchain
+      summary: Last transaction
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Status:
+                    type: string
+                    example: Success
+
+  /market/imageobject/add/:
+    post:
+      tags:
+        - 3 Market
+      summary: Add product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                public image:
+                  type: string
+                  format: binary
+                  example: "{{put here binary image}}"
+                private image:
+                  type: string
+                  format: binary
+                  example: "{{put here binary image}}"
+                name:
+                  type: string
+                  example: new image
+                price:
+                  type: integer
+                  example: '40'
+                is_sale:
+                  type: string
+                  example: 'False'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 8
+                  name:
+                    type: string
+                    example: new image
+                  creation_date:
+                    type: string
+                    example: '2022-04-19T18:53:01Z'
+                  last_updated:
+                    type: string
+                    example: '2022-04-19T18:53:01Z'
+                  price:
+                    type: string
+                    example: 40
+                  owner:
+                    type: string
+                    example: 2
+                  public_image:
+                    type: string
+                    example: http://127.0.0.1:8000/store/public_images/someimagename.png
+                  private_image:
+                    type: string
+                    example: http://127.0.0.1:8000/store/private_images/someimagename.png
+                  is_sale:
+                    type: string
+                    example: true
+  /market/images-catalog/:
+    get:
+      tags:
+        - 3 Market
+      summary: Show catalog
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  objects:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 8
+                        name:
+                          type: string
+                          example: new image
+                        creation_date:
+                          type: string
+                          example: '2022-04-19T18:53:01Z'
+                        last_updated:
+                          type: string
+                          example: '2022-04-19T18:53:01Z'
+                        price:
+                          type: string
+                          example: 40
+                        owner:
+                          type: string
+                          example: 2
+                        public_image:
+                          type: string
+                          example: http://127.0.0.1:8000/store/public_images/someimagename.png
+                        is_sale:
+                          type: string
+                          example: true
+                  
+                
+  /market/own-catalog/:
+    get:
+      tags:
+        - 3 Market
+      summary: Show own catalog
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  objects:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 8
+                        name:
+                          type: string
+                          example: new image
+                        creation_date:
+                          type: string
+                          example: '2022-04-19T18:53:01Z'
+                        last_updated:
+                          type: string
+                          example: '2022-04-19T18:53:01Z'
+                        price:
+                          type: string
+                          example: 40
+                        owner:
+                          type: string
+                          example: 2
+                        public_image:
+                          type: string
+                          example: http://127.0.0.1:8000/store/public_images/someimagename.png
+                        private_image:
+                          type: string
+                          example: http://127.0.0.1:8000/store/private_images/someimagename.png
+                        is_sale:
+                          type: string
+                          example: true
+  /market/imageobject/{item id}/change_status/:
+    put:
+      tags:
+        - 3 Market
+      summary: Change status
+      parameters:
+        - in: path
+          name: item id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_sale:
+                  type: string
+                  example: 'True'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 8
+                  is_sale:
+                    type: string
+                    example: true
+  /market/imageobject/{item id}/:
+    get:
+      tags:
+        - 3 Market
+      summary: Get public url
+      parameters:
+        - in: path
+          name: item id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  public_image:
+                    type: string
+                    example: http://127.0.0.1:8000/store/public_images/someimagename.png
