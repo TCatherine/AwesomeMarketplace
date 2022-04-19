@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import React, {Component} from 'react';
@@ -12,9 +11,6 @@ import Login from './component/login.js';
 import Authentication from './component/2fa.js';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {}
 
 componentDidUpdate(prevProps, prevState) {

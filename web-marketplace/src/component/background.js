@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './css/background.css';
 import background from './svg/background.svg'
 

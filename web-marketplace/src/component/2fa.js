@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {Component} from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './css/2fa.css'
@@ -18,10 +17,10 @@ export default class Authentication extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const data = {
-            code_token: localStorage.getItem['token'],
-            code: this.code
-        }
+        // const data = {
+        //     code_token: localStorage.getItem['token'],
+        //     code: this.code
+        // }
         this.setState({isCorrect: true});
 
         // axios.post('http://localhost:8000/auth/login/', data).then(
