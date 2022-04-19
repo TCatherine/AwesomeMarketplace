@@ -6,22 +6,39 @@ from .tasks import create_transaction, confirm_transaction
 from django.http import HttpResponse, JsonResponse
 from ..market.models import SellableObject
 from ..market.models import CustomUser as User
-from ..blockchain.models import Transaction
+from ..blockchain.models import Transaction, ConfirmedTransaction
 from django.conf import settings
+from django.core import serializers
+import json
 
 import requests
+
 
 class GetUserTransactions(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, pk):
-        r = requests.get(
-            "http://" + settings.BLOCKCHAIN_HOST + ":5000/chain/" + User.objects.get(pk=pk).username
-        )
-        if r.status_code != 200:
-            raise ValueError("Error occures while getting chain")
+        # This block getting transactions directly from blockchain.
+        # Blockchain miner itself supports this request for now but its better to
+        # return transactions from confirmed transactions stash, because miner can be restarted and t/a will be lost
+        # r = requests.get(
+        #     "http://" + settings.BLOCKCHAIN_HOST + ":5000/chain/" + User.objects.get(pk=pk).username
+        # )
+        # if r.status_code != 200:
+        #     raise ValueError("Error occures while getting chain")
+        # return HttpResponse(r.content, content_type="application/json")
 
-        return HttpResponse(r.content, content_type="application/json")
+        instance = User.objects.get(pk=pk)
+        try:
+            users_ta = serializers.serialize("json", ConfirmedTransaction.objects.filter(buyer=instance.id),
+                                             fields=("buyer", "seller", "amount", "item"))
+        except ConfirmedTransaction.DoesNotExist:
+            return JsonResponse({"error": instance.username + " does not has any confirmed transactions"})
+
+        users_ta = json.loads(users_ta)
+        users_ta = [ta["fields"] for ta in users_ta]
+        return JsonResponse({"transactions": users_ta})
+
 
 class GetChainView(APIView):
 
