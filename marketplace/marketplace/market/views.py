@@ -10,6 +10,17 @@ from .serializers import SetImageObjectSerializer, ShowPublicImageObjectSerializ
     ShowPrivateImageObjectSerializer, ChangeStatusSerializer
 
 
+class GetPublicImageUrl(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, pk):
+        try:
+            url = ShowPublicImageObjectSerializer(ImageObject.objects.get(pk=pk)).data['public_image']
+        except:
+            return JsonResponse({'error': 'No such item exist'})
+
+        return JsonResponse({'image url': url})
+
 class SetImageObjectView(generics.CreateAPIView):
     queryset = ImageObject.objects.all()
     permission_classes = (IsAuthenticated,)
