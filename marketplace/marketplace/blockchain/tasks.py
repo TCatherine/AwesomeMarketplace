@@ -18,6 +18,9 @@ def create_transaction(buyer, seller, amount, item_id):
     amount = Decimal(amount)
     item = SellableObject.objects.get(pk=item_id)
     ta = Transaction(buyer=buyer, seller=seller, amount=amount, item=item)
+    ta.save()
+    buyer.last_transaction_id = ta.id
+    buyer.save(update_fields=['last_transaction_id'])
     buyer.balance -= item.price
     seller.balance += item.price
     try:  # try to get block with transaction
@@ -39,7 +42,6 @@ def create_transaction(buyer, seller, amount, item_id):
     except Exception as e:
         raise Exception
 
-    ta.save()
     buyer.save(update_fields=['balance'])
     seller.save(update_fields=['balance'])
     return ta.id
@@ -51,7 +53,7 @@ def confirm_transaction(ta_id):
     item = SellableObject.objects.get(pk=ta.item.id)
     item.owner = ta.buyer
     item.is_sale = False
-    cta = ConfirmedTransaction(buyer=ta.buyer.id, seller=ta.seller.id, amount=ta.amount, item=ta.item)
+    cta = ConfirmedTransaction(id=ta.id, buyer=ta.buyer.id, seller=ta.seller.id, amount=ta.amount, item=ta.item)
     item.save(update_fields=['owner', 'is_sale'])
     cta.save()
     ta.delete()

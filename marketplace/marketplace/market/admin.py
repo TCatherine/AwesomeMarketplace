@@ -21,6 +21,7 @@ class CustomUserAdmin(UserAdmin):
                 'fields': (
                     'is_2fa_enabled',
                     'balance',
+                    'last_transaction_id'
                 )
             }
         )

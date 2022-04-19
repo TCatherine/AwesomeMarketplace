@@ -40,6 +40,26 @@ class GetUserTransactions(APIView):
         return JsonResponse({"transactions": users_ta})
 
 
+class GetLastTransactionStatus(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        tid = request.user.last_transaction_id
+
+        if tid == -1:
+            return JsonResponse({"Status": "You has no transactions"})
+        last_ta = None
+        try:
+            last_ta = Transaction.objects.get(pk=tid)
+        except Transaction.DoesNotExist:
+            try:
+                last_ta = ConfirmedTransaction.objects.get(pk=tid)
+            except ConfirmedTransaction.DoesNotExist:
+                return JsonResponse({"Status": "Error"})
+            return JsonResponse({"Status": "Success"})
+        return JsonResponse({"Status": "In progress"})
+
+
 class GetChainView(APIView):
 
     def get(self, request):

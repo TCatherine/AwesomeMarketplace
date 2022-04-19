@@ -17,7 +17,7 @@ class Transaction(models.Model):
 
 
 class ConfirmedTransaction(models.Model):
-    id = models.BigAutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     buyer = models.CharField(max_length=100)
     seller = models.CharField(max_length=100)
     amount = models.IntegerField(null=False, blank=False, default=0)

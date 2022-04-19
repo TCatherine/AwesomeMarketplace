@@ -8,4 +8,6 @@ urlpatterns = [
     path('deal/<int:pk>/', views.DealView.as_view(), name='do deal'),
     path('get-chain/', views.GetChainView.as_view(), name='get blockchain'),
     path('get-user-transactions/<int:pk>/', views.GetUserTransactions.as_view(), name='get user transactions'),
+    path('get-last-ta-status/', views.GetLastTransactionStatus.as_view(),
+         name='get user last transaction status'),
 ]

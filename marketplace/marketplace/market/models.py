@@ -6,6 +6,7 @@ from django.conf import settings
 class CustomUser(AbstractUser):
     is_2fa_enabled = models.BooleanField(default=False)
     balance = models.IntegerField(null=False, blank=False, default=0)
+    last_transaction_id = models.IntegerField(null=False, blank=False, default=-1)
 
 class SellableObject(models.Model):
     id = models.AutoField(primary_key=True)
