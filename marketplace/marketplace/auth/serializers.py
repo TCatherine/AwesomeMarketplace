@@ -88,13 +88,19 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
 class UpdateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username', 'first_name', 'last_name', 'email', 'is_2fa_enabled')
         extra_kwargs = {
             'username': {'required': False},
             'first_name': {'required': False},
             'last_name': {'required': False},
             'email': {'required': False},
+            'is_2fa_enabled': {'required': False},
         }
+
+    def validate_is_2fa_enabled(self, value):
+        if value != True and value != False:
+            raise serializers.ValidationError({"2fa": "Must be True or False"})
+        return value
 
     def validate_email(self, value):
         user = self.context['request'].user
@@ -125,6 +131,8 @@ class UpdateUserSerializer(serializers.ModelSerializer):
             instance.email = validated_data['email']
         if 'username' in validated_data:
             instance.username = validated_data['username']
+        if 'is_2fa_enabled' in validated_data:
+            instance.is_2fa_enabled = validated_data['is_2fa_enabled']
 
         instance.save()
 

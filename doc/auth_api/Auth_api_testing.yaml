@@ -288,6 +288,9 @@ paths:
                 email:
                   type: string
                   example: '{{email}}'
+                is_2fa_enabled:
+                  type: boolean
+                  example: 'True/False'
       security:
         - bearerAuth: []
       parameters:
