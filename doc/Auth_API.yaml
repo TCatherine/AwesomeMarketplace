@@ -159,7 +159,7 @@ paths:
   /auth/register/:
     post:
       tags:
-        - default
+        - common
       summary: Create new user
       requestBody:
         content:
@@ -216,7 +216,7 @@ paths:
   /auth/login/refresh/:
     post:
       tags:
-        - default
+        - common
       summary: Refresh JWT token
       requestBody:
         content:
@@ -244,7 +244,7 @@ paths:
   /auth/change_password/{user_id}/:
     put:
       tags:
-        - default
+        - common
       summary: Change user password
       requestBody:
         content:
@@ -277,7 +277,7 @@ paths:
   /auth/update_profile/{user_id}/:
     put:
       tags:
-        - default
+        - common
       summary: Change user profile data
       requestBody:
         content:
@@ -331,3 +331,49 @@ paths:
                   is_2fa_enabled:
                     type: boolean
                     example: 'true/false'
+                    
+  /auth/user/:
+    post:
+      tags:
+        - common
+      summary: Get current user information
+      requestBody:
+        content:
+          application/json: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response - mirroring request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: '2'
+                  username:
+                    type: string
+                    example: '{{username}}'
+                  first_name:
+                    type: integer
+                    example: '1'
+                  last_name:
+                    type: integer
+                    example: '2'
+                  email:
+                    type: string
+                    example: '{{email}}'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: 'Incorrect authentication credentials.'
+                    
+                    
