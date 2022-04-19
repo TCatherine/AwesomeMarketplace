@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  site:
+    build: ./web-marketplace
+    image: web-awesomeproject
+    command: npm start
+    volumes:
+      - ./marketplace/:/usr/src/web-marketplace/
+    ports:
+      - 3000:3000
+
   web:
     image: awesomeproject
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
