@@ -73,19 +73,19 @@ list-style-type: none;
 
 
 .name {
-position: absolute;
-left: 88.44%;
-right: 5.42%;
-top: 34.94%;
-bottom: 1.52%;
+    position: absolute;
+    left: 88.44%;
+    right: 5.42%;
+    top: 34.94%;
+    bottom: 1.52%;
 
-font-family: 'News Cycle';
-font-style: normal;
-font-weight: 100%;
-font-size: 100%;
-line-height: 100%;
+    font-family: 'News Cycle';
+    font-style: normal;
+    font-weight: 100%;
+    font-size: 100%;
+    line-height: 100%;
 
-color: #184870;
+    color: #184870;
 
 
 }
@@ -105,24 +105,33 @@ color: #184870;
 
 .user {
     position: absolute;
-    right: 10%;
-    left: 90%;
-    top: 43.94%;
-    bottom: 12.12%;
+    left: 85%;
+    /* left: 85%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%; */
+    height: 100%;
+    width: 15%;
     list-style-type: none;
-
-    font-family: 'Nexa Bold';
-    font-style: normal;
-
-    color: #16456B;
 }
 
 .user-img {
     position: absolute;
     right: 0%;
-    left: 96%;
-    top: 10%;
-    bottom: 12.12%;
+    bottom: 20%;
 
     height : 3vw;
+}
+
+.username {
+    position: center;
+    left: 0%;
+    bottom: 0%;
+    height : 3vw; 
+
+    text-decoration: none; 
+    font-family: 'Nexa Bold';
+    font-style: normal;
+
+    color: #16456B;
 }

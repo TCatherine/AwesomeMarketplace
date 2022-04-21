@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './css/login.css'
 import './css/common.css'
-import App from './../App'
 
 export default class Login extends Component {
     state = {}
@@ -29,7 +28,7 @@ export default class Login extends Component {
         axios.post('auth/login/', data).then(
             res => {
                 console.log(res)
-                localStorage.setItem('token', res.data.access);
+                localStorage.setItem('access', res.data.access);
                 this.setState({loggedIn: true});
                 }
                 )

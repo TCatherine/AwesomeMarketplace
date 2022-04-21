@@ -5,8 +5,9 @@ import './css/common.css'
 
 export default class Authentication extends Component {
     state = {}
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.state = {
         error_username : "",
         error_password : "",
