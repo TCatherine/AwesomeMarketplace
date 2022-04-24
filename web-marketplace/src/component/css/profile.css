@@ -13,74 +13,172 @@
 
 }
 
-.img-user{
-/* Ellipse 3 */
-
-position: absolute;
-left: 25%;
-right: 25%;
-top: -20%;
-height: 40%;
-
-background: #FFFFFF;
-border: 3px solid #FF0000;
-box-sizing: border-box;
-border-radius: 100%;
-
-}
-
 .photo-user {
-    height: 100%;
-    width: 100%;
-    /* clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%); */
-    clip-path: circle(49% at 50% 50%);
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: -20%;
+    /* height: 40%; */
+    width: 40%;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 3px solid #FF0000;
 }
 
 .first-second-names {
     /* first */
 
-position: absolute;
-top:25%;
-left:10%;
-width: 80%;
-font-size: 300%;
-line-height: 100%;
-font-family: 'Nexa Light';
-font-style: normal;
+    position: absolute;
+    top:25%;
+    left:10%;
+    width: 80%;
+    font-size: 3vw;
+    font-family: 'Nexa Light';
+    font-style: normal;
 
-color: #184870;
+    color: #184870;
 
 }
 
 .user-name {
-/* username */
+    /* username */
 
-position: absolute;
-top:35%;
-left:10%;
-width: 80%;
+    position: absolute;
+    top:37%;
+    left:10%;
+    width: 80%;
 
-font-family: 'Nexa Bold';
-font-style: normal;
-font-size: 200%;
-line-height: 100%;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 2vw;
+    line-height: 100%;
 
-color: #184870;
+    color: #184870;
 }
 
 .user-email{
 /* email */
 
-position: absolute;
-top:45%;
-left:10%;
-width: 80%;
+    position: absolute;
+    top:45%;
+    left:10%;
+    width: 80%;
 
-font-family: 'Nexa';
-font-style: normal;
-font-weight: 700;
-font-size: 150%;
-line-height: 100%;
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.buttom-change-profile
+{
+    /* XMLID_7_ */
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    width: 80%;
+    height: 7%;
+
+    background: #FFFFFF;
+    border-radius: 10px; 
+    border: 3px solid #184870;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;  
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1.5vw;
+    color: #184870;
+}
+
+.old-password {
+    /* Rectangle 6 */
+
+    position: absolute;
+    width: 80%;
+    height: 5%;
+    left: 10%;
+    top: 58%;
+
+}
+
+.name-password {
+    position: absolute;
+    width: 80%;
+    left: 0%;
+    top: 0%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-weight: 100%;
+    font-size: 0.8vw;
+
 
 color: #184870;
+
+}
+
+.input-password {
+    /* Rectangle 6 */
+
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    left: 0%;
+    top: 60%;
+
+    background: #FFFFFF;
+    border: 2px solid #184870;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.new-password {
+    /* Rectangle 6 */
+    position: absolute;
+    width: 80%;
+    height: 5%;
+    left: 10%;
+    top: 68%;
+
+    /* background: #FFFFFF;
+    border: 2px solid #184870;
+    box-sizing: border-box;
+    border-radius: 10px; */
+}
+
+.confirm-password {
+    /* Rectangle 6 */
+
+    position: absolute;
+    width: 80%;
+    height: 5%;
+    left: 10%;
+    top: 78%;
+
+}
+
+.buttom-change-password {
+     /* XMLID_7_ */
+     position: absolute;
+     left: 10%;
+     top: 90%;
+     width: 80%;
+     height: 7%;
+ 
+     background: #FFFFFF;
+     border-radius: 10px; 
+     border: 3px solid #184870;
+     box-sizing: border-box;
+     text-align: center;
+     justify-content: center;  
+     
+     font-family: 'Nexa Light';
+     font-style: normal;
+     font-size: 1.5vw;
+     color: #184870;
 }

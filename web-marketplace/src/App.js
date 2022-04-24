@@ -18,6 +18,7 @@ export default class App extends Component {
     axios.get('auth/user/').then(
         res => {
             this.setUser(res.data);
+            localStorage.setItem('id', res.data.id);
         },
         err => { console.log(err);}
     )

@@ -4,6 +4,8 @@ import { Link, Navigate } from 'react-router-dom';
 import './css/login.css'
 import './css/common.css'
 
+
+
 export default class Login extends Component {
     state = {}
     constructor(props) {
@@ -24,7 +26,6 @@ export default class Login extends Component {
             password: this.password
         }
 
-        // TODO: change to get_code
         axios.post('auth/login/', data).then(
             res => {
                 console.log(res)
