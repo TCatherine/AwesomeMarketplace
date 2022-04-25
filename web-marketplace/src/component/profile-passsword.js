@@ -23,7 +23,7 @@ export default class ProfilePassword extends Component {
         }
         var id = localStorage.getItem('id');
         var url = 'auth/change_password/' + id + '/';
-        axios.post(url, data).then(
+        axios.put(url, data).then(
             res => {
                 console.log(res)
                 localStorage.setItem('access', res.data.access);

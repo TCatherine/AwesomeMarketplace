@@ -25,19 +25,18 @@
     border: 3px solid #FF0000;
 }
 
-.first-second-names {
-    /* first */
 
+.first-name {
+    /* first */
     position: absolute;
     top:25%;
     left:10%;
-    width: 80%;
-
+    width: 39%;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
-
+ 
     text-align: center;
     font-family: 'Nexa Bold';
     font-style: normal;
@@ -47,7 +46,37 @@
     color: #184870;
 }
 
-.first-second-names::placeholder{
+.first-name::placeholder{
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 3vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.second-name {
+    /* first */
+    position: absolute;
+    top:25%;
+    left:51%;
+    width: 39%;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+ 
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 3vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.second-name::placeholder{
     text-align: center;
     font-family: 'Nexa Bold';
     font-style: normal;
