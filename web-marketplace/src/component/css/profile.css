@@ -214,6 +214,14 @@ color: #184870;
     border: 2px solid #184870;
     box-sizing: border-box;
     border-radius: 10px;
+
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 1vw;
+    line-height: 100%;
+
+    color: #184870;
 }
 
 .new-password {
@@ -223,11 +231,6 @@ color: #184870;
     height: 5%;
     left: 10%;
     top: 68%;
-
-    /* background: #FFFFFF;
-    border: 2px solid #184870;
-    box-sizing: border-box;
-    border-radius: 10px; */
 }
 
 .confirm-password {
@@ -238,7 +241,6 @@ color: #184870;
     height: 5%;
     left: 10%;
     top: 78%;
-
 }
 
 .buttom-change-password {
