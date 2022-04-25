@@ -9,7 +9,66 @@
     background: #FFFFFF;
     border: 3px solid #FF0606;
     box-sizing: border-box;
+}
 
+.profile-entites {
+    /* Rectangle 2 */
+    
+    position: absolute;
+    width: 60%;
+    min-height: 90%;
+    height: auto;
+    left: 38%;
+    top: 10%;
+    overflow: auto;
+
+    display: table;
+    
+    background: #FFFFFF;
+    border: 3px solid #FF0606;
+    box-sizing: border-box;
+    
+}
+
+.entites-line{
+    /* Line 3 */
+
+    position: absolute;
+    width: 90%;
+    height: 0px;
+    left: 5%;
+    top: 40%;
+
+    border: 1px solid #FF0000;
+    background: #ff0000;
+}
+
+.history {
+    position: absolute;
+    width: 90%;
+    height: 30%;
+    left: 5%;
+    top: 5%;
+    height: auto;
+
+    text-align: left;
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 2vw;
+    color: #184870;
+}
+
+.jawel {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 45%;
+    height: max-content;
+    text-align: left;
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 2vw;
+    color: #184870;
 
 }
 

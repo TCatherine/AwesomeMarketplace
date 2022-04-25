@@ -6,6 +6,7 @@ import user from './svg/1.png'
 import axios from 'axios';
 import ProfilePassword from './profile-password';
 import ProfileInfo from './profile-info';
+import ProfileCatalog from './profile-catalog';
 
 export default class Profile extends Component {
    
@@ -32,6 +33,14 @@ export default class Profile extends Component {
                 <img src={user} className='photo-user'/>
                     <ProfileInfo/>
                     <ProfilePassword/>
+                </div>
+                <div className='profile-entites'>
+                    <div className='history'>HISTORY</div>
+                    <div className='entites-line'/>
+                    <div className='jawel'>
+                    <div className='jawel-text'>JAWEL</div>
+                    <ProfileCatalog/>
+                    </div>
                 </div>
             </div>
         )
