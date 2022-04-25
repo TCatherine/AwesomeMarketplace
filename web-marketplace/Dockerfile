@@ -5,3 +5,5 @@ WORKDIR /usr/src/marketplace
 
 # copy project
 COPY . .
+
+RUN npm install
