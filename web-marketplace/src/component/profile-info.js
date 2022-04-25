@@ -79,13 +79,13 @@ export default class ProfileInfo extends Component {
     render() {
         return (
         <form onSubmit={this.handleSubmit}>
-            <input type='text' className='first-name' placeholder={this.state.first_name}
+            <input type='text' className='profile-first-name' placeholder={this.state.first_name}
              onChange={e => this.setState({first_name: e.target.value})}/>
-            <input type='text' className='second-name' placeholder={this.state.second_name}
+            <input type='text' className='profile-second-name' placeholder={this.state.second_name}
              onChange={e => this.setState({second_name: e.target.value})}/>
-            <input type='text' className='user-name' placeholder={this.state.username}
+            <input type='text' className='profile-user-name' placeholder={this.state.username}
              onChange={e => this.setState({username: e.target.value})}/>
-            <input type='text' className='user-email' placeholder={this.state.email}
+            <input type='text' className='profile-user-email' placeholder={this.state.email}
              onChange={e => this.setState({email: e.target.value})}/>
             <button className='buttom-change-profile'>change</button>
         </form>    );

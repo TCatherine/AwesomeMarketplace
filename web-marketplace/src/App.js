@@ -14,12 +14,12 @@ import Profile from './component/profile.js';
 export default class App extends Component {
   state= {};
 
-  refreshJWTTolen = () => {
+  refreshJWTToken = () => {
     const data = {
       refresh: localStorage.getItem('access')
     };
 
-    axios.post('auth/login/refresh/').then(
+    axios.post('auth/login/refresh/', data).then(
       res => {
           localStorage.setItem('access', res.data.access);
       },
@@ -35,8 +35,8 @@ export default class App extends Component {
             this.setUser(res.data);
             localStorage.setItem('id', res.data.id);
         },
-        err => { 
-          
+        err => {
+          this.refreshJWTToken();
           console.log(err);
         }
     )

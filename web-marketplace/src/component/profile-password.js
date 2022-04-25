@@ -11,7 +11,10 @@ export default class ProfilePassword extends Component {
         this.state = {
             old_password: "",
             confirm_password: "",
-            new_password: ""
+            new_password: "",
+            error_old_password: "",
+            error_new_password: "",
+            error_confirm_password: ""
         }  
     }
 
@@ -44,11 +47,17 @@ export default class ProfilePassword extends Component {
                 closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
                 });
 
+                // A LITTLE HACK
+                var old_password;
+                if (error.response.data.old_password)
+                    old_password = error.response.data.old_password.old_password;
+                else  old_password = error.response.data.old_password;
+
                 this.setState({
-                    error_old_password : check(error.response.data.username),
+                    error_old_password : check(old_password),
                     error_new_password : check(error.response.data.password),
                     error_confirm_password: check(error.response.data.detail)
-                })
+                });
             }
         )
     }
@@ -61,19 +70,19 @@ export default class ProfilePassword extends Component {
                     <label className='name-password'>old password</label>
                     <input type='text' className='input-password' placeholder='*** ***'
                     onChange={e => this.old_password = e.target.value}/>
-                    <label className='error'>{this.state.error_old_password}</label>
+                    <label className='password-error'>{this.state.error_old_password}</label>
                 </div>
                 <div className='new-password' align="left">
                     <label className='name-password'>new password</label>
                     <input type='text' className='input-password' placeholder='*** ***'
                     onChange={e => this.new_password = e.target.value}/>
-                    <label className='error'>{this.state.error_new_password}</label>
+                    <label className='password-error'>{this.state.error_new_password}</label>
                 </div>
                 <div className='confirm-password' align="left">
                     <label className='name-password'>confirm password</label>
                     <input type='text' className='input-password' placeholder='*** ***'
                     onChange={e => this.confirm_password = e.target.value}/>
-                    <label className='error'>{this.state.error_confirm_password}</label>
+                    <label className='password-error'>{this.state.error_confirm_password}</label>
                 </div>
                 <button className='buttom-change-password'>change password</button>
             </form>);

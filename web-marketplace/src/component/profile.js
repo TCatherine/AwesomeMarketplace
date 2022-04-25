@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import './css/profile.css'
 import user from './svg/1.png'
 import axios from 'axios';
-import ProfilePassword from './profile-passsword';
+import ProfilePassword from './profile-password';
 import ProfileInfo from './profile-info';
 
 export default class Profile extends Component {
