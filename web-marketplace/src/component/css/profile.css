@@ -32,22 +32,56 @@
     top:25%;
     left:10%;
     width: 80%;
-    font-size: 3vw;
-    font-family: 'Nexa Light';
+
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+
+    text-align: center;
+    font-family: 'Nexa Bold';
     font-style: normal;
+    font-size: 3vw;
+    line-height: 100%;
 
     color: #184870;
-
 }
+
+.first-second-names::placeholder{
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 3vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
 
 .user-name {
     /* username */
-
     position: absolute;
     top:37%;
     left:10%;
     width: 80%;
+    outline: none;
 
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 2vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.user-name::placeholder{
+    text-align: center;
     font-family: 'Nexa Bold';
     font-style: normal;
     font-size: 2vw;
@@ -64,9 +98,25 @@
     left:10%;
     width: 80%;
 
-    font-family: 'Nexa';
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+
+    text-align: center;
+    font-family: 'Nexa Bold';
     font-style: normal;
-    font-weight: 700;
+    font-size: 1vw;
+    line-height: 100%;
+
+    color: #184870;
+
+}
+
+.user-email::placeholder{
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
     font-size: 1vw;
     line-height: 100%;
 

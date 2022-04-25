@@ -16,12 +16,13 @@ export default class ProfileInfo extends Component {
     }
 
     render() {
+        var first_second_name = this.state.first_name + ' ' + this.state.second_name;
         return (
         <div>
-            <div className='first-second-names'>{this.state.first_name} {this.state.second_name}</div>
-            <div className='user-name'>{this.state.username}</div>
-            <div className='user-email'>{this.state.email}</div>
-            <div className='buttom-change-profile'>change</div>
+            <input type='text' className='first-second-names' placeholder={first_second_name}/>
+            <input type='text' className='user-name' placeholder={this.state.username}/>
+            <input type='text' className='user-email' placeholder={this.state.email}/>
+            <div className='buttom-change-profile' >change</div>
         </div>    );
     }
 }
