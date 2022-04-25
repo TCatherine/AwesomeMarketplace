@@ -1,13 +1,14 @@
-import axios from 'axios';
 import React, {Component} from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './css/2fa.css'
 import './css/common.css'
+import axios from 'axios';
 
 export default class Authentication extends Component {
     state = {}
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.state = {
         error_username : "",
         error_password : "",
@@ -19,26 +20,27 @@ export default class Authentication extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const data = {
-            code_token: localStorage.getItem['token'],
+            code_token: localStorage.getItem('token'),
             code: this.code
         }
-        this.setState({isCorrect: true});
 
-        // axios.post('http://localhost:8000/auth/login/', data).then(
-        //     res => {
-        //         console.log(res)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.response);
-        //         var check = (data) => {if (data && Array.isArray(data)) return data[0]; return data};
+        localStorage.clear();
+        axios.post('auth/login/', data).then(
+            res => {
+                this.setState({isCorrect: true});
+                localStorage.setItem('access', res.data.access);
+                console.log(localStorage.getItem('access'));
+            })
+            .catch((error) => {
+                console.log(error.response);
+                var check = (data) => {if (data && Array.isArray(data)) return data[0]; return data};
 
-        //         this.setState({
-        //             code : check(error.response.data.code),
-
-        //             error_sum: check(error.response.data.login)
-        //         })
-        //     }
-        // )
+                this.setState({
+                    code : check(error.response.data.code),
+                    error_sum: check(error.response.data.login)
+                })
+            }
+        )
 
     }
 
@@ -54,7 +56,7 @@ export default class Authentication extends Component {
             <div className='code-2fa' align="left">
                 <label className='name-signin'>Code</label>
                 <input type='text' className='form-control-signup' placeholder='*** - ***'
-                onChange={e => this.username = e.target.value}/>
+                onChange={e => this.code = e.target.value}/>
                 {/* TODO: query again! */}
                 <div className='try-again'>
                 Сode not received?  <Link to={'/register'} className='link-sign-in'>Try again </Link>

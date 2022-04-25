@@ -21,6 +21,8 @@ export default class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        axios.defaults.headers.common['Authorization'] = null;
+        
         const register_data = {
             username: this.username,
             password: this.password,
@@ -30,21 +32,10 @@ export default class Register extends Component {
             last_name: this.second_name
         }
 
-        const login_data = {
-            username: this.username,
-            password: this.password,
-        }
-
         axios.post('auth/register/', register_data).then(
             res => {
-
-                console.log(res)
-                axios.post('auth/get-code/', login_data).then(
-                    res => {
-                        console.log(res)
-                        localStorage.setItem('token', res.data.token);
-                        this.setState({loggedIn: true});
-                    })
+                console.log(res);
+                this.setState({isCorrect: true});
             })
             .catch((error) => {
                 console.log(error.response);
@@ -63,9 +54,10 @@ export default class Register extends Component {
     }
 
     render() {
-        if (this.state.loggedIn) {
-            return <Navigate to={'/2fa'}/>;
+        if (this.state.isCorrect) {
+            return <Navigate to={'/login'}/>;
         }
+
         return (
             <form onSubmit={this.handleSubmit}>
             <div className='form'>

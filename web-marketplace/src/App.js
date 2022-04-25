@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import React, {Component} from 'react';
@@ -10,39 +9,56 @@ import Panel from './component/panel.js';
 import Register from './component/register.js';
 import Login from './component/login.js';
 import Authentication from './component/2fa.js';
+import Profile from './component/profile.js';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  state = {}
+  state= {};
 
-componentDidUpdate(prevProps, prevState) {
-  console.log('update mounted!');
-  const config = {
-      headers: {
-          Authorization: 'Bearer' + localStorage.getItem('token')
-      }
-  }
-  axios.get('auth/user/', config).then(
+  refreshJWTToken = () => {
+    const data = {
+      refresh: localStorage.getItem('access')
+    };
+
+    axios.post('auth/login/refresh/', data).then(
       res => {
-        this.setState({
-          user: res.data
-        })
-          console.log(res);
-      }
-  )
-} 
+          localStorage.setItem('access', res.data.access);
+      },
+      err => { 
+        
+        console.log(err);
+      });
+  }
+
+  componentDidMount = () => {
+    axios.get('auth/user/').then(
+        res => {
+            this.setUser(res.data);
+            localStorage.setItem('id', res.data.id);
+        },
+        err => {
+          this.refreshJWTToken();
+          console.log(err);
+        }
+    )
+  };
+
+    setUser = user => {
+      this.setState({
+        user: user
+      });
+    }
 
   render() {
+
     return (
       <BrowserRouter>
       <div className="App">
         <Back/>
-        <Panel/>
+        <Panel user={this.state.user}/>
 
       <Routes>
-        <Route exact path="/" element={ <Home/>}/>
+        <Route exact path="/" element={<Home/>}/>
+        <Route exact path="/profile" element={<Profile/>}/>
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/register" element={<Register/>}/>
         <Route exact path="/2fa" element={<Authentication/>}/>

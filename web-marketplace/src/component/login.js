@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './css/login.css'
 import './css/common.css'
-import App from './../App'
+
+
 
 export default class Login extends Component {
     state = {}
@@ -19,20 +20,19 @@ export default class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        axios.defaults.headers.common['Authorization'] = null;
         
         const data = {
             username: this.username,
             password: this.password
         }
 
-        // TODO: change to get_code
-        axios.post('auth/login/', data).then(
+        axios.post('auth/get-code/', data).then(
             res => {
-                console.log(res)
-                localStorage.setItem('token', res.data.access);
                 this.setState({loggedIn: true});
+                localStorage.setItem('token', res.data.token);
                 }
-                )
+            )
             .catch((error) => {
                 console.log(error.response);
                 var check = (data) => {if (data && Array.isArray(data)) return data[0]; return data};

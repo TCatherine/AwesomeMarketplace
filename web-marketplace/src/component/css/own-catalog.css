@@ -1,0 +1,98 @@
+.catalog-entity {
+    position: absolute;
+    width: 46%;
+    height: 400%;
+    left: 0%;
+    top: 100%;
+
+    background: #FFFFFF;
+    border: 2px solid #ff0000;
+    box-sizing: border-box;
+}
+
+.entity-name
+{
+    position: absolute;
+    width: 35%;
+    left: 1%;
+    top: 0%;
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1vw;
+
+    color: #184870;
+}
+
+.entity-price
+{
+    position: absolute;
+    width: 35%;
+    left: 1%;
+    bottom: 20%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 0.8vw;
+    
+    color: #184870;
+}
+
+.entity-sale
+{
+    position: absolute;
+    width: 35%;
+    left: 1%;
+    bottom: 10%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 0.8vw;
+    
+    color: #184870;
+}
+
+.entity-public
+{
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    left: 30%;
+    top: 0%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 0.8vw;
+    text-align: bottom;
+    
+    color: #184870;
+}
+
+.entity-private
+{
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    right: 1%;
+    top: 0%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 0.8vw;
+    text-align: bottom;
+    
+    color: #184870;
+}
+
+.entity-public-img {
+    position: absolute;
+    top: 1%;
+    width: 90%;
+    height: 90%;
+}
+
+.entity-public-text {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}

@@ -74,9 +74,14 @@ Need to start
 `npm insatll react-router-dom --save`
 `npm i axios`
 `npm i cors`
+`npm install zlib`
+`npm install querystring`
+`npm install path buffer fs stream http`
 
 ```
 chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 ```
 
- 
+ ```
+ npm install --save-dev express cors
+ ```    
