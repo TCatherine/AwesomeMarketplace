@@ -20,19 +20,19 @@ export default class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        axios.defaults.headers.common['Authorization'] = null;
         
         const data = {
             username: this.username,
             password: this.password
         }
 
-        axios.post('auth/login/', data).then(
+        axios.post('auth/get-code/', data).then(
             res => {
-                console.log(res)
-                localStorage.setItem('access', res.data.access);
                 this.setState({loggedIn: true});
+                localStorage.setItem('token', res.data.token);
                 }
-                )
+            )
             .catch((error) => {
                 console.log(error.response);
                 var check = (data) => {if (data && Array.isArray(data)) return data[0]; return data};
