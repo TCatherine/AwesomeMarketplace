@@ -2,8 +2,13 @@
 import React, {Component} from 'react';
 import './css/profile.css'
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 export default class ProfileInfo extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -38,9 +43,17 @@ export default class ProfileInfo extends Component {
               this.setState({
                 first_second_name : this.state.first_name + ' ' + this.state.second_name
             });
+            toast.success('User information changed', {
+                position: "bottom-right", autoClose: 1000, hideProgressBar: false,
+                closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
+                });
             },
             error => {
                 console.log(error.response);
+                toast.error('Something went wrong', {
+                    position: "bottom-right", autoClose: 1000, hideProgressBar: false,
+                closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
+                });
             });
     }
 
@@ -74,7 +87,7 @@ export default class ProfileInfo extends Component {
              onChange={e => this.setState({username: e.target.value})}/>
             <input type='text' className='user-email' placeholder={this.state.email}
              onChange={e => this.setState({email: e.target.value})}/>
-            <button className='buttom-change-profile' >change</button>
+            <button className='buttom-change-profile'>change</button>
         </form>    );
     }
 }

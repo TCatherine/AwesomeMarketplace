@@ -2,6 +2,8 @@
 import React, {Component} from 'react';
 import './css/profile.css'
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class ProfilePassword extends Component {
     constructor(props) {
@@ -28,11 +30,19 @@ export default class ProfilePassword extends Component {
                 console.log(res)
                 localStorage.setItem('access', res.data.access);
                 this.setState({loggedIn: true});
+                toast.success('The password has been changed', {
+                    position: "bottom-right", autoClose: 1000, hideProgressBar: false,
+                closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
+                });
                 }
                 )
             .catch((error) => {
                 console.log(error.response);
                 var check = (data) => {if (data && Array.isArray(data)) return data[0]; return data};
+                toast.error('Something went wrong', {
+                    position: "bottom-right", autoClose: 1000, hideProgressBar: false,
+                closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
+                });
 
                 this.setState({
                     error_old_password : check(error.response.data.username),
