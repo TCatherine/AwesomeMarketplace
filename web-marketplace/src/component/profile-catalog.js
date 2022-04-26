@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './css/own-catalog.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import {Link} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import user from './svg/1.png'
 
@@ -53,7 +54,7 @@ export default class ProfileCatalog extends Component {
             data = { }
         }
         return(
-            <div className='catalog-entity' style={{top: top_pos, left: left_pos}}>
+            <Link to={"/profile"} className='catalog-entity' style={{top: top_pos, left: left_pos}}>
                 <div className='entity-name'>Name: {data.name}</div>
                 <div className='entity-price'>Price: {data.price}</div>
                 <div className='entity-sale'>{data.is_sale}</div>
@@ -65,7 +66,7 @@ export default class ProfileCatalog extends Component {
                     <img src={data.private_path} className='entity-public-img'/>
                     <div  className='entity-public-text'>private</div>
                 </div>
-            </div>
+            </Link>
         );
     }
 

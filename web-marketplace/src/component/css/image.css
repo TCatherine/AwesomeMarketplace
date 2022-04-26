@@ -1,0 +1,234 @@
+.board-img {
+/* Rectangle 2 */
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    left: 5%;
+    top: 15%;
+
+    background: #FFFFFF;
+    border: 3px solid #FF0606;
+    box-sizing: border-box;
+}
+
+.img-name {
+    /* name */
+
+    position: absolute;
+    left: 5%;
+    top: 5%;
+
+    text-align: left;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 3vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.info-block {
+    /* Rectangle 3 */
+    position: absolute;
+    width: 35%;
+    height: 45%;
+    left: 3%;
+    top: 15%;
+
+    background: #FFFFFF;
+    border: 2px solid #184870;
+    box-sizing: border-box;
+}
+
+.info-text{
+    /* name */
+
+    position: absolute;
+    left: 3%;
+    top: 3%;
+
+    text-align: left;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 2vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.name {
+    /* price */
+
+    position: absolute;
+    left: 3%;
+    top: 15%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.is_sale {
+    /* price */
+
+    position: absolute;
+    left: 3%;
+    top: 30%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.owner {
+    /* price */
+
+    position: absolute;
+    left: 3%;
+    top: 45%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.creation-date {
+    position: absolute;
+    left: 3%;
+    top: 60%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.update-date {
+    position: absolute;
+    left: 3%;
+    top: 75%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.button-change {
+    /* XMLID_7_ */
+
+    position: absolute;
+    width: 30%;
+    height: 7%;
+    left: 5%;
+    top: 70%;
+
+    background: #FFFFFF;
+    border: 3px solid #184870;
+    border-radius: 10px; 
+    box-sizing: border-box;
+
+    text-align: center;
+    justify-content: center;    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1.5vw;
+    color: #184870;
+}
+
+.button-sale {
+    position: absolute;
+    width: 30%;
+    height: 7%;
+    left: 5%;
+    top: 80%;
+
+    background: #FFFFFF;
+    border: 3px solid #184870;
+    border-radius: 10px; 
+    box-sizing: border-box;
+
+    text-align: center;
+    justify-content: center;    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1.5vw;
+    color: #184870;
+    
+}
+
+.img-public {
+
+    position: absolute;
+    width: 50%;
+    left: 40%;
+    top: 3%;
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 2vw;
+    text-align: top;
+    
+    color: #184870;
+
+}
+
+.img-private {
+    position: absolute;
+    width: 50%;
+    right: 2%;
+    bottom: 2%;
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 2vw;
+    text-align: bottom;
+    
+    color: #184870;
+
+}
+
+.input-field{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+
+    text-align: left;
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+
+}
+
+.input-field::placeholder{
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
