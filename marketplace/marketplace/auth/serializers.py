@@ -287,7 +287,7 @@ class TokenObtainPairSerializer(TokenObtainSerializer):
         if "code" in attrs and "code_token" in attrs:
             data = super().validate(attrs)
         elif "username" in attrs and "password" in attrs:
-            if not User.objects.get(username=attrs["username"]).is_2fa_enabled:
+            if not self._get_user(attrs["username"]).is_2fa_enabled:
                 self.user = self._authenticate_no2fa(attrs)
                 data = {}
             else:
