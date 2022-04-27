@@ -31,7 +31,7 @@
     /* Rectangle 3 */
     position: absolute;
     width: 35%;
-    height: 45%;
+    height: 53%;
     left: 3%;
     top: 15%;
 
@@ -72,23 +72,23 @@
     color: #184870;
 }
 
-.is_sale {
-    /* price */
+.price {
+     /* price */
 
-    position: absolute;
-    left: 3%;
-    top: 30%;
-    
-    font-family: 'Nexa Light';
-    font-style: normal;
-    text-align: left;
-    font-size: 1.5vw;
-    line-height: 100%;
-
-    color: #184870;
+     position: absolute;
+     left: 3%;
+     top: 30%;
+     
+     font-family: 'Nexa Light';
+     font-style: normal;
+     text-align: left;
+     font-size: 1.5vw;
+     line-height: 100%;
+ 
+     color: #184870;
 }
 
-.owner {
+.is_sale {
     /* price */
 
     position: absolute;
@@ -104,7 +104,9 @@
     color: #184870;
 }
 
-.creation-date {
+.owner {
+    /* price */
+
     position: absolute;
     left: 3%;
     top: 60%;
@@ -118,10 +120,24 @@
     color: #184870;
 }
 
-.update-date {
+.creation-date {
     position: absolute;
     left: 3%;
     top: 75%;
+    
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
+.update-date {
+    position: absolute;
+    left: 3%;
+    top: 90%;
     
     font-family: 'Nexa Light';
     font-style: normal;
@@ -178,7 +194,7 @@
 .img-public {
 
     position: absolute;
-    width: 50%;
+    width: 35%;
     left: 40%;
     top: 3%;
 
@@ -193,7 +209,7 @@
 
 .img-private {
     position: absolute;
-    width: 50%;
+    width: 35%;
     right: 2%;
     bottom: 2%;
 
@@ -231,4 +247,12 @@
     line-height: 100%;
 
     color: #184870;
+}
+
+.public-img {
+    width: 100%;
+}
+
+.private-img {
+    width: 100%;
 }

@@ -15,7 +15,7 @@ export default class ProfileInfo extends Component {
             first_name : "unknown",
             second_name : "unknown",
             username: "unknown",
-            email: "1@mail.ru",
+            email: "1@mail.ru"
         }
     }
 
