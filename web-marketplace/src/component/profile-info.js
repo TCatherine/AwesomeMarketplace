@@ -64,7 +64,8 @@ export default class ProfileInfo extends Component {
                     first_name : res.data.first_name,
                     second_name : res.data.last_name,
                     username: res.data.username,
-                    email: res.data.email
+                    email: res.data.email,
+                    balance: res.data.balance
                   });
                   this.setState({
                     first_second_name : this.state.first_name + ' ' + this.state.second_name
@@ -87,6 +88,7 @@ export default class ProfileInfo extends Component {
              onChange={e => this.setState({username: e.target.value})}/>
             <input type='text' className='profile-user-email' placeholder={this.state.email}
              onChange={e => this.setState({email: e.target.value})}/>
+            <div className='balance'>Balance: {this.state.balance}</div>
             <button className='buttom-change-profile'>change</button>
         </form>    );
     }

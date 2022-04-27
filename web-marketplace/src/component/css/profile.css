@@ -211,12 +211,32 @@
     color: #184870;
 }
 
+.balance{
+    position: absolute;
+    top:50%;
+    left:10%;
+    width: 80%;
+
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+
+    text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 1vw;
+    line-height: 100%;
+
+    color: #184870;
+}
+
 .buttom-change-profile
 {
     /* XMLID_7_ */
     position: absolute;
     left: 10%;
-    top: 50%;
+    top: 55%;
     width: 80%;
     height: 7%;
 
@@ -240,7 +260,7 @@
     width: 80%;
     height: 5%;
     left: 10%;
-    top: 58%;
+    top: 63%;
 
 }
 
@@ -289,7 +309,7 @@ color: #184870;
     width: 80%;
     height: 5%;
     left: 10%;
-    top: 68%;
+    top: 72%;
 }
 
 .confirm-password {
@@ -299,14 +319,14 @@ color: #184870;
     width: 80%;
     height: 5%;
     left: 10%;
-    top: 78%;
+    top: 82%;
 }
 
 .buttom-change-password {
      /* XMLID_7_ */
      position: absolute;
      left: 10%;
-     top: 90%;
+     top: 92%;
      width: 80%;
      height: 7%;
  
