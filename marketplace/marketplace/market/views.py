@@ -30,7 +30,7 @@ class SetImageObjectView(generics.CreateAPIView):
 class ShowPublicImageCatalogView(APIView):
     permission_classes = (AllowAny,)
 
-    def get(self, request, pk=None):
+    def post(self, request, pk=None):
         batch_num = int(request.data['batch num'])
         number = int(request.data['number'])
         try:
