@@ -1,16 +1,20 @@
 version: '3.8'
 
 services:
-  site:
-    build: ./web-marketplace
-    image: web-awesomeproject
-    command: npm start
-    volumes:
-      - ./marketplace/:/usr/src/web-marketplace/
+  nginx: 
+    # restart: unless-stopped
+    build:
+        context: .
+        dockerfile: ./docker/nginx/Dockerfile
     ports:
-      - 3000:3000
+        - 80:80
+    volumes:
+        # - static_volume:/app/backend/server/django_static
+        - ./docker/nginx/development:/etc/nginx/conf.d
+    depends_on: 
+        - backend
 
-  web:
+  backend:
     image: awesomeproject
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
     volumes:

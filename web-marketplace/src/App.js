@@ -11,6 +11,17 @@ import Login from './component/login.js';
 import Authentication from './component/2fa.js';
 import Profile from './component/profile.js';
 
+// remove this line
+//axios.defaults.baseURL = "http://localhost:8000";
+
+// new code
+if (window.location.origin === "http://localhost:3000") {
+  axios.defaults.baseURL = "http://127.0.0.1:8000";
+} else {
+  axios.defaults.baseURL = window.location.origin;
+}
+
+
 export default class App extends Component {
   state= {};
 
