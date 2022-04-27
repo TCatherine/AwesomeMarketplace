@@ -333,3 +333,24 @@ color: #184870;
      font-size: 0.8vw;
      color: #ff0000;
 }
+
+.button-new {
+    position: absolute;
+    left: 76.3%;
+    height: 100%;
+    width: 20%;
+    top: 0%;
+
+    background: #FFFFFF;
+    border-radius: 10px; 
+    border: 3px solid #184870;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;  
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1.5vw;
+    color: #184870;
+
+}

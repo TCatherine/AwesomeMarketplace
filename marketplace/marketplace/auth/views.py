@@ -28,7 +28,8 @@ class GetUserDataView(APIView):
             'username': profile.username,
             'first_name' : profile.first_name,
             'last_name': profile.last_name,
-            'email': profile.email
+            'email': profile.email,
+            'balance': profile.balance
         }
         return JsonResponse(json_profile)
 

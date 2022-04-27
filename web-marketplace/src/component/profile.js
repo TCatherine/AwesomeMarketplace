@@ -39,6 +39,7 @@ export default class Profile extends Component {
                     <div className='entites-line'/>
                     <div className='jawel'>
                     <div className='jawel-text'>JAWEL</div>
+                    <button className='button-new'>new</button>
                     <ProfileCatalog/>
                     </div>
                 </div>
