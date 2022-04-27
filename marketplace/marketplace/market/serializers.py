@@ -6,16 +6,12 @@ from rest_framework.test import APIRequestFactory
 from django.http import JsonResponse
 
 class ShowPublicImageObjectSerializer(serializers.ModelSerializer):
-    # public_image = serializers.SerializerMethodField()
-
     class Meta:
         model = ImageObject
         fields = ['id', 'name', 'creation_date', 'last_updated',
                   'price', 'owner', 'public_image', 'is_sale']
 
 class ShowPrivateImageObjectSerializer(serializers.ModelSerializer):
-    # public_image = serializers.SerializerMethodField()
-
     class Meta:
         model = ImageObject
         fields = ['id', 'name', 'creation_date', 'last_updated',
@@ -56,11 +52,13 @@ class ChangeStatusSerializer(serializers.ModelSerializer):
         return attrs
 
     def update(self, instance, validated_data):
-        user = self.context['request'].user
         if instance.owner.id != user.id:
             raise serializers.ValidationError({"owner": "User isn't owner"})
 
-        instance.is_sale = validated_data.get('is_sale', instance.is_sale)
+        if instance.is_sale:
+            instance.is_sale = False
+        else:
+            instance.is_sale = True
         instance.save()
         return instance
 

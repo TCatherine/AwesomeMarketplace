@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import React, {Component} from 'react';
-// import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './css/profile.css'
 import user from './svg/1.png'
 import axios from 'axios';
@@ -39,7 +39,7 @@ export default class Profile extends Component {
                     <div className='entites-line'/>
                     <div className='jawel'>
                     <div className='jawel-text'>JAWEL</div>
-                    <button className='button-new'>new</button>
+                    <Link to="/add" className='button-new'>new</Link>
                     <ProfileCatalog/>
                     </div>
                 </div>

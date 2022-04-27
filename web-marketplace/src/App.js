@@ -10,7 +10,8 @@ import Register from './component/register.js';
 import Login from './component/login.js';
 import Authentication from './component/2fa.js';
 import Profile from './component/profile.js';
-import ProfileImage from './component/profile-img.js';
+import ImageAdditor from './component/add.js';
+import WrappedProfileImage from './component/profile-img.js';
 
 // remove this line
 //axios.defaults.baseURL = "http://localhost:8000";
@@ -74,7 +75,8 @@ export default class App extends Component {
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/register" element={<Register/>}/>
         <Route exact path="/2fa" element={<Authentication/>}/>
-        <Route exact path="/editor" element={<ProfileImage/>}/>
+        <Route path="/add" element={<ImageAdditor/>}/>
+        <Route path="/editor/:Id" element={<WrappedProfileImage/>}/>
       </Routes>
       </div>
       </BrowserRouter>
