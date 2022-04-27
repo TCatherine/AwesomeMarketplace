@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7554b096-df8e-49ca-b998-f70748693376",
+		"_postman_id": "8877a11e-5f05-4827-b26f-8e206cc16951",
 		"name": "REST API testing",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -452,7 +452,10 @@
 					"name": "Get user info",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
