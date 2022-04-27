@@ -4,7 +4,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import {Link} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import user from './svg/1.png'
 
 toast.configure();
 
@@ -43,7 +42,6 @@ export default class ProfileCatalog extends Component {
 
     getComponent = (entity, idx) => {
         var func = (is_sale) => {if (is_sale) return "for sale"; return "not for sale"};
-        let ent = this.state.entities[0];
         let data;
         let left_pos;
         let top_pos;
@@ -57,9 +55,11 @@ export default class ProfileCatalog extends Component {
         if (entity!==undefined){
             
             data = {
+                id: entity.id,
                 name:entity.name ,
                 price: entity.price,
-                is_sale: func(entity.is_sale),
+                is_sale_str: func(entity.is_sale),
+                is_sale: entity.is_sale,
                 public_path: entity.public_image,
                 private_path: entity.private_image,
                 creation_date: entity.creation_date,
@@ -74,7 +74,7 @@ export default class ProfileCatalog extends Component {
             <Link to={{pathname: "/editor/"+idx}}  state={{data: data}} className='catalog-entity' style={{top: top_pos, left: left_pos}}>
                 <div className='entity-name'>Name: {data.name}</div>
                 <div className='entity-price'>Price: {data.price}</div>
-                <div className='entity-sale'>{data.is_sale}</div>
+                <div className='entity-sale'>{data.is_sale_str}</div>
                 <div className='entity-public'>
                     <img src={data.public_path} className='entity-public-img'/>
                     <div  className='entity-public-text'>public</div>
