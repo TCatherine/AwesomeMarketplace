@@ -14,7 +14,8 @@ services:
         - ./docker/nginx/production:/etc/nginx/conf.d
         - ./docker/nginx/certs:/etc/ssl/certs
     depends_on: 
-        - backend     
+        - backend
+    stop_signal: SIGINT
     
   backend:
     image: awesomeproject
