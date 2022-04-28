@@ -52,6 +52,7 @@ class ChangeStatusSerializer(serializers.ModelSerializer):
         return attrs
 
     def update(self, instance, validated_data):
+        user = self.context['request'].user
         if instance.owner.id != user.id:
             raise serializers.ValidationError({"owner": "User isn't owner"})
 
