@@ -12,6 +12,7 @@ import Authentication from './component/2fa.js';
 import Profile from './component/profile.js';
 import ImageAdditor from './component/add.js';
 import WrappedProfileImage from './component/profile-img.js';
+import Catalog from './component/catalog.js';
 
 // remove this line
 //axios.defaults.baseURL = "http://localhost:8000";
@@ -56,9 +57,7 @@ export default class App extends Component {
   };
 
     setUser = user => {
-      this.setState({
-        user: user
-      });
+      this.setState({user: user}, () => console.log(this.state));
     }
 
   render() {
@@ -77,6 +76,8 @@ export default class App extends Component {
         <Route exact path="/2fa" element={<Authentication/>}/>
         <Route path="/add" element={<ImageAdditor/>}/>
         <Route path="/editor/:Id" element={<WrappedProfileImage/>}/>
+        <Route exact path="/catalog" element={<Catalog/>}/>
+        <Route exact path="/catalog/2" element={<Catalog/>}/>
       </Routes>
       </div>
       </BrowserRouter>
