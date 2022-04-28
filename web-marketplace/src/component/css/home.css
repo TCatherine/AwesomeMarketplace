@@ -39,6 +39,7 @@ position: center;
 border-radius: 10px;
 
 background: #FFFFFF;
+
 }
 
 .start-name {
@@ -51,6 +52,7 @@ font-style: normal;
 font-weight: 100%;
 font-size: 100%;
 line-height: 100%;
+text-decoration: none; 
 
 color: #ff0000;
 }

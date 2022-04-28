@@ -78,117 +78,65 @@
 .products {
     position: absolute;
     top: 20%;
+    width: 90%;
     left: 5%;
-    right: 5%;
-    bottom: 20%;
+    height: 75%;
     background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
+    border: 3px solid #FF0606;
     border-radius: 5px;
 }
 
-.product_1 {
+.entity {
     position: absolute;
-    top: 25%;
-    left: 10%;
-    right: 74%;
-    bottom: 53%; 
-    
+    top: 5%;
+    width: 20%;
+    left: 3%;
+    height: 30%;
     background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
+    border: 2px solid #FF0606;
     border-radius: 5px;
 }
 
-.product_2 {
+.product_name {
     position: absolute;
-    top: 53%;
-    left: 10%;
-    right: 74%;
-    bottom: 25%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
+    width: 20%;
+    left: 0%;
+    top: 0%;
+
+    font-family: 'Nexa Light';
+    text-align: left;
+    font-style: normal;
+    font-size: 1vw;
+
+    color: #184870;
 }
 
-.product_3 {
+.product_price {
     position: absolute;
-    top: 25%;
-    left: 31%;
-    right: 53%;
-    bottom: 53%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
+    width: 20%;
+    left: 0%;
+    top: 35%;
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    text-align: left;
+    font-size: 1vw;
+
+    color: #184870;
 }
 
-.product_4 {
+.product_img{
     position: absolute;
-    top: 53%;
-    left: 31%;
-    right: 53%;
-    bottom: 25%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
-}
-.product_5 {
-    position: absolute;
-    top: 25%;
-    left: 53%;
-    right: 31%;
-    bottom: 53%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
+    width: 80%;
+    left: 20%;
+    top: 15%;
 }
 
-.product_6 {
+.product-public-img{
+    height: auto;
+    max-height: 100%;
     position: absolute;
-    top: 53%;
-    left: 53%;
-    right: 31%;
-    bottom: 25%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
-}
-
-.product_7 {
-    position: absolute;
-    top: 25%;
-    left: 74%;
-    right: 10%;
-    bottom: 53%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
-}
-
-.product_8 {
-    position: absolute;
-    top: 53%;
-    left: 74%;
-    right: 10%;
-    bottom: 25%; 
-    
-    background: rgba(255, 255, 255, 0.9);
-    border: 4px solid #FF0606;
-    border-radius: 5px;
-}
-
-.price{
-    position: absolute;
-    top: 85%;
-    right: 5%;
-    color: #16456B;
-}
-
-.pic{
-    position: relative;
-    height : 8vw;
+    max-width: 80%;
+    width: auto;
+    left: 20%;
 }
