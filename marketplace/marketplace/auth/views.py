@@ -29,7 +29,8 @@ class GetUserDataView(APIView):
             'first_name' : profile.first_name,
             'last_name': profile.last_name,
             'email': profile.email,
-            'balance': profile.balance
+            'balance': profile.balance,
+            'is_2fa_enabled': profile.is_2fa_enabled
         }
         return JsonResponse(json_profile)
 

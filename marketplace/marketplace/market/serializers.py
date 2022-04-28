@@ -32,8 +32,8 @@ class SetImageObjectSerializer(serializers.ModelSerializer):
         data = self.context['request'].data
         object = ImageObject.objects.create(
             name=data['name'],
-            public_image=data['public image'],
-            private_image=data['private image'],
+            public_image=data['public_image'],
+            private_image=data['private_image'],
             price=data['price'],
             owner=user,
             is_sale=False if (data['is_sale']) == "False" else True
@@ -52,6 +52,7 @@ class ChangeStatusSerializer(serializers.ModelSerializer):
         return attrs
 
     def update(self, instance, validated_data):
+        user = self.context['request'].user
         if instance.owner.id != user.id:
             raise serializers.ValidationError({"owner": "User isn't owner"})
 
