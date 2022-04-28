@@ -27,7 +27,7 @@ export default class Authentication extends Component {
         localStorage.clear();
         axios.post('auth/login/', data).then(
             res => {
-                this.setState({isCorrect: true});
+                this.setState({isCorrect: true}, () => console.log(this.state));
                 localStorage.setItem('access', res.data.access);
                 console.log(localStorage.getItem('access'));
             })

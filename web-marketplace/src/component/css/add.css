@@ -26,7 +26,7 @@
     top: 15%;
 
     background: #FFFFFF;
-    border: 2px solid #184870;
+    border: 1px solid #184870;
     box-sizing: border-box;
 }
 
@@ -51,7 +51,7 @@
 
 .enter-price {
     position: absolute;
-    top:50%;
+    top:48%;
     left:2%;
     width: 100%;
     border-top-style: hidden;
@@ -87,3 +87,127 @@
     color: #184870;
 }
 
+.upload_public_img {
+    position: absolute;
+    top: 15%;
+    left: 32%;
+    width: 40%;
+    height: 60%;
+
+    box-sizing: border-box;
+  }
+
+.upload_private_img {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 40%;
+    height: 60%;
+
+    box-sizing: border-box;
+  }
+
+.button_upload_public_img {
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    width: 20%;
+    height: 7%;
+
+    background: #ffffff;
+    border-radius: 10px; 
+    border: 3px solid #184870;
+    box-sizing: border-box;
+    text-align: center;
+
+    justify-content: center;  
+    text-align: center;
+
+  }
+   
+  .button_upload_private_img {
+    position: absolute;
+    top: 80%;
+    left: 5%;
+    width: 20%;
+    height: 7%;
+
+    background: #ffffff;
+    border-radius: 10px; 
+    border: 3px solid #184870;
+    box-sizing: border-box;
+    text-align: center;
+
+    justify-content: center;  
+    text-align: center;
+
+  }
+
+  .input_file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+   
+  .input_file-icon-wrapper {
+    height: 100%;
+    width: 20%;
+    /* margin-right: 15px; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-right: 3px solid #184870;
+  }
+
+  .input_file-icon{
+    height:80%;
+  }
+   
+  .input_file-button-text {
+    line-height: 1;
+    text-align: center;
+    width: 100%;
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1vw;
+    color: #184870;
+    list-style-type: none;
+  }
+   
+  .input_file-button {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    color: #184870;
+   
+    font-size: 1vw;
+    font-weight: 500;
+   
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+.upload_img_ent {
+    position: absolute;
+    height: 85%;
+    width: 80%;
+    left: 10%;
+    top: 15%;
+}
