@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import {Link, Navigate} from 'react-router-dom';
 import './css/home.css'
 
 export default class Home extends Component {
+
+   
     render() {
         return (
         <div>
             <button className='buttom'>
-                <div className='start-name'>Start</div>
+                <Link to={'/catalog'}  className='start-name'>Start</Link>
             </button>
         <div className='slogan'>
              Free from censorship

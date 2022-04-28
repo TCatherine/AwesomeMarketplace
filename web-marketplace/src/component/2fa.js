@@ -57,7 +57,7 @@ export default class Authentication extends Component {
                 onChange={e => this.username = e.target.value}/>
                 {/* TODO: query again! */}
                 <div className='try-again'>
-                Сode not received?  <Link to={'/register'} className='link-sign-in'>Try again </Link>
+                Сode is not received?  <Link to={'/register'} className='link-sign-in'>Try again </Link>
                 </div>
             </div>  
             <button className='buttom-signup'>

@@ -10,6 +10,7 @@ import Panel from './component/panel.js';
 import Register from './component/register.js';
 import Login from './component/login.js';
 import Authentication from './component/2fa.js';
+import Catalog from './component/catalog.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -46,6 +47,8 @@ componentDidUpdate(prevProps, prevState) {
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/register" element={<Register/>}/>
         <Route exact path="/2fa" element={<Authentication/>}/>
+        <Route exact path="/catalog" element={<Catalog/>}/>
+        <Route exact path="/catalog/2" element={<Catalog/>}/>
       </Routes>
       </div>
       </BrowserRouter>

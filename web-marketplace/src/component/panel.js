@@ -29,7 +29,7 @@ export default class Home extends Component {
           <nav className='panel'>
           <div >
             <Link to={'/'} className='title'>AwesomeWebMarketplace</Link>
-            <a href='' className='catalog'>Marketplace</a>
+            <Link to={'/catalog'} className='catalog'>Marketplace</Link>
             <div>
               <ul>
                 <li className='sign-in'>
