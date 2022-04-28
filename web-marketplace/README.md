@@ -71,7 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Need to start
 `npm install cors --save`
-`npm insatll react-router-dom --save`
+`npm install react-router-dom --save`
 `npm i axios`
 `npm i cors`
 `npm install zlib`
