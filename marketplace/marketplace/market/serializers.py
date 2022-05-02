@@ -55,7 +55,7 @@ class ChangeImageObjectSerializer(serializers.ModelSerializer):
         if instance.owner.id != user.id:
             raise serializers.ValidationError({"owner": "User isn't owner"})
 
-        instance.name = validated_data['name'],
+        instance.name = validated_data['name']
         instance.price = validated_data['price']
         instance.save()
         return instance
