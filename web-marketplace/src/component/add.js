@@ -47,18 +47,20 @@ export default class ImageAdditor extends Component {
     }
 
     addProduct = event => {
-        var public_img = new FormData();
-        var private_img = new FormData();
-        public_img.append('image', this.state.public_image);
-        private_img.append('image', this.state.private_image);
-        const data = {
-            public_image: public_img,
-            private_image: private_img,
-            name: this.state.name,
-            price: this.state.price,
-            is_sale: this.state.is_sale
-        }
-        axios.post('market/imageobject/add/', data).then(
+        let form_data = new FormData();
+        form_data.append('public_image', this.state.public_image);
+        form_data.append('private_image', this.state.private_image);
+        form_data.append('name', this.state.name);
+        form_data.append('price', this.state.price);
+        form_data.append('is_sale', this.state.is_sale);
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            },
+          };
+
+        axios.post('market/imageobject/add/', form_data, config).then(
            res  => {
                 console.log(res.request);
                 toast.success('Image is added', {
@@ -73,7 +75,6 @@ export default class ImageAdditor extends Component {
                 });
             }
         )
-        console.log(data);
     }
 
     render() {
