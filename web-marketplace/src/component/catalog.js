@@ -55,8 +55,6 @@ export default class Catalog extends Component {
                 id: entity.id,
                 name:entity.name ,
                 price: entity.price,
-                is_sale_str: func(entity.is_sale),
-                is_sale: entity.is_sale,
                 public_path: entity.public_image,
                 creation_date: entity.creation_date,
                 last_updated: entity.last_updated,
@@ -67,11 +65,10 @@ export default class Catalog extends Component {
             data = { }
         }
         return(
-            <Link to={{pathname: "/editor/"+idx}}  state={{data: data}} className='entity'  style={{top: top_pos, left: left_pos}}>
+            <Link to={{pathname: "/image/"+idx}}  state={{data: data}} className='entity'  style={{top: top_pos, left: left_pos}}>
                  <img src={data.public_path} className='product-public-img'/>
                 <div className='product_name'>Name: {data.name}</div>
                 <div className='product_price'>Price: {data.price}</div>
-               
             </Link>
         );
     }

@@ -128,7 +128,7 @@
     font-family: 'Nexa Light';
     font-style: normal;
     text-align: left;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     line-height: 100%;
 
     color: #184870;
@@ -142,7 +142,7 @@
     font-family: 'Nexa Light';
     font-style: normal;
     text-align: left;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     line-height: 100%;
 
     color: #184870;
@@ -191,10 +191,26 @@
     
 }
 
+.img {
+    position: absolute;
+    max-width: 60%;
+    max-height: 90%;
+    left: 40%;
+    top: 10%;
+
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 2vw;
+    text-align: top;
+    
+    color: #184870;
+}
+
 .img-public {
 
     position: absolute;
-    width: 35%;
+    max-width: 35%;
+    max-height: 90%;
     left: 40%;
     top: 3%;
 
@@ -209,6 +225,8 @@
 
 .img-private {
     position: absolute;
+    max-width: 35%;
+    max-height: 90%;
     width: 35%;
     right: 2%;
     bottom: 2%;

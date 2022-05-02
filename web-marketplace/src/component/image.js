@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 
 
-class ProfileImage extends Component {
+class Image extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,17 +20,17 @@ class ProfileImage extends Component {
             creation_date: this.props.data.creation_date,
             last_updated: this.props.data.last_updated,
             public_path: this.props.data.public_path,
-            private_path: this.props.data.private_path,
-            sale_button_name:  this.change_button_name(this.props.data.is_sale)
+            private_path: this.props.data.private_path
         }
+        this.change_button_name();
     }
 
-    change_button_name(is_sale) {
-        if (is_sale) {
-            return "not for sell";
+    change_button_name() {
+        if (this.state.is_sale) {
+            this.name_sale = "not for sell";
         }
         else {
-            return "sell";
+            this.name_sale = "sell";
         }
     }
 
@@ -44,9 +44,9 @@ class ProfileImage extends Component {
                     console.log(res);
                     this.setState({
                         is_sale: res.data.is_sale,
-                        is_sale_str: func(res.data.is_sale),
-                        sale_button_name:  this.change_button_name(res.data.is_sale)
+                        is_sale_str: func(res.data.is_sale)
                     }, () => console.log(this.state));
+                    this.change_button_name();
                 toast.success('Successfully change!', {
                     position: "bottom-right", autoClose: 1000, hideProgressBar: false,
                     closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
@@ -64,48 +64,35 @@ class ProfileImage extends Component {
     }
 
     render() {
+        console.log(this.name_sale);
         return (
-            // <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <div className='board-img'>
                     <div className='img-name'>{this.state.name}</div>
                     <div className='info-block'>
                         <div className='info-text'>INFORMATION</div>
-                        <div className='name'>Name:
-                            <input type='text' className='input-field' placeholder={this.state.name}/>
-                        </div>
-                        <div className='price'>Price:
-                            <input type='text' className='input-field' placeholder={this.state.price}/>
-                        </div>
-                        <div className='is_sale'>{this.state.is_sale_str}</div>
-                        <div className='owner'>Owner: {this.state.owner.username}
-                        </div>
+                        <div className='name'>Name: {this.state.name}</div>
+                        <div className='price'>Price: {this.state.price}</div>
+                        {/* <div className='owner'>Owner: {this.state.owner.username}</div> */}
                         <div className='creation-date'>Cration Date: {this.state.creation_date}
                         </div>
                         <div className='update-date'>Update Date: {this.state.last_updated}
                         </div>
                     </div>
-                    <button className='button-change'>change</button>
-                    <button className='button-sale' onClick={this.handleSubmit}>{this.state.sale_button_name}</button>
-                    <div className='img-public'>
-                        <div>public</div>
-                        <img src={this.state.public_path}  className='public-img'/>
-                    </div>
-                    <div className='img-private'>
-                        <img src={this.state.private_path}  className='private-img'/>
-                        <div>private</div>
-                    </div>
+                    <button className='button-change'>buy</button>
+                    <img src={this.state.public_path}  className='img'/>
                 </div>
-            // </form>
+            </form>
         )
     }
 }
 
-const WrappedProfileImage = props => {
+const WrappedImage = props => { 
     let { Id } = useParams();
     const location = useLocation();
     // console.log(Id);
     // console.log(location);
-    return <ProfileImage data={location.state.data}/> 
+    return <Image data={location.state.data}/> 
 }
 
-export default WrappedProfileImage;
+export default WrappedImage;
