@@ -34,6 +34,37 @@ class ProfileImage extends Component {
         }
     }
 
+    changeInfo = e => {
+        e.preventDefault();
+        const data = {
+            'name': this.state.name,
+            'price': this.state.price
+        }
+
+        const url = 'market/imageobject/' + this.state.id + '/change_info/';
+        axios.put(url, data).then (
+            res => {
+                toast.success('Successfully change!', {
+                    position: "bottom-right", autoClose: 1000, hideProgressBar: false,
+                    closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
+                });
+                this.setState({
+                    name: res.data.name,
+                    price: res.data.price,
+                    last_updated: res.data.last_updated
+                }, ()=> {console.log(res.data);});
+            },
+            error => {
+                console.log(error.response);
+                toast.error('Something went wrong', {
+                    position: "bottom-right", autoClose: 1000, hideProgressBar: false,
+                closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
+                });
+            }
+        )
+
+    }
+
     handleSubmit = e => {
         e.preventDefault();
         var func = (is_sale) => {if (is_sale) return "for sale"; return "not for sale"};
@@ -41,7 +72,6 @@ class ProfileImage extends Component {
 
         axios.put(url).then(
             res => {
-                    console.log(res);
                     this.setState({
                         is_sale: res.data.is_sale,
                         is_sale_str: func(res.data.is_sale),
@@ -51,8 +81,6 @@ class ProfileImage extends Component {
                     position: "bottom-right", autoClose: 1000, hideProgressBar: false,
                     closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
                 });
-
-                console.log(this.name_sale);
             },
             error => {
                 console.log(error.response);
@@ -65,16 +93,18 @@ class ProfileImage extends Component {
 
     render() {
         return (
-            // <form onSubmit={this.handleSubmit}>
+            // <form onSubmit={this.changeInfo}>
                 <div className='board-img'>
                     <div className='img-name'>{this.state.name}</div>
                     <div className='info-block'>
                         <div className='info-text'>INFORMATION</div>
                         <div className='name'>Name:
-                            <input type='text' className='input-field' placeholder={this.state.name}/>
+                            <input type='text' className='input-field' placeholder={this.state.name}
+                             onChange={e => this.setState({name: e.target.value})}/>
                         </div>
                         <div className='price'>Price:
-                            <input type='text' className='input-field' placeholder={this.state.price}/>
+                            <input type='text' className='input-field' placeholder={this.state.price}
+                             onChange={e => this.setState({price: e.target.value})}/>
                         </div>
                         <div className='is_sale'>{this.state.is_sale_str}</div>
                         <div className='owner'>Owner: {this.state.owner.username}
@@ -84,7 +114,7 @@ class ProfileImage extends Component {
                         <div className='update-date'>Update Date: {this.state.last_updated}
                         </div>
                     </div>
-                    <button className='button-change'>change</button>
+                    <button className='button-change' onClick={this.changeInfo}>change</button>
                     <button className='button-sale' onClick={this.handleSubmit}>{this.state.sale_button_name}</button>
                     <div className='img-public'>
                         <div>public</div>
