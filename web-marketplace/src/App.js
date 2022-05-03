@@ -19,9 +19,14 @@ import WrappedImage from './component/image.js';
 //axios.defaults.baseURL = "http://localhost:8000";
 
 // new code
-if (window.location.origin === "http://localhost:3000") {
-  axios.defaults.baseURL = "http://127.0.0.1:8000";
-} else {
+// if (window.location.origin === "http://localhost:3000") {
+  // axios.defaults.baseURL = "http://127.0.0.1:8000";
+// } 
+if (window.location.origin.endsWith(":3000")) {
+  const backendURL = window.location.origin.slice();
+  axios.defaults.baseURL = backendURL.replace(":3000", ":8000");
+}
+else {
   axios.defaults.baseURL = window.location.origin;
 }
 

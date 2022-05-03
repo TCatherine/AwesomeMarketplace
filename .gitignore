@@ -2,3 +2,4 @@
 *__pycache__*
 *.sqlite3
 marketplace/store
+marketplace/django_static

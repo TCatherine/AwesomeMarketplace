@@ -1,20 +1,6 @@
 version: '3.8'
 
 services:
-  # nginx: 
-  #   # restart: unless-stopped
-  #   build:
-  #       context: .
-  #       dockerfile: ./docker/nginx/Dockerfile
-  #   ports:
-  #       - 80:80
-  #   volumes:
-  #       # - static_volume:/app/backend/server/django_static
-  #       - ./docker/nginx/development:/etc/nginx/conf.d
-  #   depends_on: 
-  #       - backend
-  #   stop_signal: SIGINT
-
   site:
     build: ./web-marketplace
     image: web-awesomeproject
@@ -43,7 +29,7 @@ services:
   migrations:
     build: ./marketplace
     image: awesomeproject
-    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput"
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput ; python manage.py collectstatic --noinput"
     volumes:
       - ./marketplace/:/usr/src/marketplace/
     env_file:
