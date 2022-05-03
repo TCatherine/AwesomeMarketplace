@@ -7,7 +7,7 @@ from .models import ImageObject
 
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import SetImageObjectSerializer, ShowPublicImageObjectSerializer, \
-    ShowPrivateImageObjectSerializer, ChangeStatusSerializer
+    ShowPrivateImageObjectSerializer, ChangeStatusSerializer, ChangeImageObjectSerializer
 
 
 class GetPublicImageUrl(APIView):
@@ -31,7 +31,7 @@ class ShowPublicImageCatalogView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request, pk=None):
-        batch_num = int(request.data['batch num'])
+        batch_num = int(request.data['batch_num'])
         number = int(request.data['number'])
         try:
             images = ImageObject.objects.filter(is_sale=True)
@@ -74,3 +74,8 @@ class UserTransactionsView(APIView):
     def get(self, request, pk):
         # redirect to view from blockchain app
         return redirect('get user transactions', pk=pk)
+
+class ChangeImageInfoView(generics.UpdateAPIView):
+    queryset = ImageObject.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ChangeImageObjectSerializer

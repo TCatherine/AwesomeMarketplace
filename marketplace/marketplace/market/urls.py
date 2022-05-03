@@ -8,6 +8,7 @@ urlpatterns = [
     path('imageobject/<int:pk>/deal/', views.DealView.as_view()),
     path('imageobject/<int:pk>/change_status/', views.ChangeStatusView.as_view()),
     path('imageobject/<int:pk>/', views.GetPublicImageUrl.as_view()),
+    path('imageobject/<int:pk>/change_info/', views.ChangeImageInfoView.as_view()),
     # transactions
     path('user-transactions/<int:pk>/', views.UserTransactionsView.as_view()),
 ]
