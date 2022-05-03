@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework import generics
 
-from .models import ImageObject
+from .models import ImageObject, CustomUser as User
 
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import SetImageObjectSerializer, ShowPublicImageObjectSerializer, \
@@ -40,6 +40,13 @@ class ShowPublicImageCatalogView(APIView):
 
         images_list = [ShowPublicImageObjectSerializer(im, context={'request': request}).data
                        for im in images[batch_num*number:(batch_num+1)*number]]
+
+        for img in images_list:
+            try:
+                img['owner'] = User.objects.get(pk=img['owner']).username
+            except User.DoesNotExist:
+                pass
+
         return JsonResponse({'objects': images_list})
 
 class ShowPrivateImageCatalogView(APIView):
