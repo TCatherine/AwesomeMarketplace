@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorkerRegistration';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8000/';
+// axios.defaults.baseURL = 'http://localhost:8000/';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access');
 
 
