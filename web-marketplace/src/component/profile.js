@@ -7,6 +7,7 @@ import axios from 'axios';
 import ProfilePassword from './profile-password';
 import ProfileInfo from './profile-info';
 import ProfileCatalog from './profile-catalog';
+import ProfileHistory from './profile-history';
 
 export default class Profile extends Component {
    
@@ -35,7 +36,9 @@ export default class Profile extends Component {
                     <ProfilePassword/>
                 </div>
                 <div className='profile-entites'>
-                    <div className='history'>HISTORY</div>
+                    <div className='history'>HISTORY
+                    </div>
+                    <ProfileHistory/>
                     <div className='entites-line'/>
                     <div className='jawel'>
                     <div className='jawel-text'>JAWEL</div>

@@ -370,6 +370,6 @@
     font-style: normal;
     font-size: 1.5vw;
     color: #184870;
-    list-style-type: none;
+    text-decoration: none; 
 
 }
