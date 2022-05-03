@@ -9,9 +9,7 @@ export default class Home extends Component {
     render() {
         return (
         <div>
-            <button className='buttom'>
-                <Link to={'/catalog'}  className='start-name'>Start</Link>
-            </button>
+            <Link className='start' to={'/catalog'}>Start</Link>
         <div className='slogan'>
              Free from censorship
         </div>
