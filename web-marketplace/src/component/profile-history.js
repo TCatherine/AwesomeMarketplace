@@ -37,8 +37,9 @@ export default class ProfileHistory extends Component {
     }
 
     getComponent = (entity, idx) => {
+        const shift_top = (5+idx*40) + '%';
         return (
-        <p key='{d.name}' className='transaction'>    
+        <p key='{d.name}' className='transaction' style={{top: shift_top}}>    
             <div className='text-transaction'>unknow: [buyer: {entity.buyer}] [owner: {entity.seller}] [amount: {entity.amount}]</div>
             <img src={user} className='demo-img'/>
         </p>);
