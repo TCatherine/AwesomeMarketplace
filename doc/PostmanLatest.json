@@ -458,6 +458,14 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		},
@@ -591,12 +599,12 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "public image",
+									"key": "public_image",
 									"type": "file",
 									"src": "/C:/Li/WI-FI addresses.png"
 								},
 								{
-									"key": "private image",
+									"key": "private_image",
 									"type": "file",
 									"src": "/C:/Li/WI-FI addresses.png"
 								},
@@ -649,7 +657,7 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "batch num",
+									"key": "batch_num",
 									"value": "0",
 									"type": "text"
 								},
@@ -721,7 +729,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{access-token}}",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUxMTIxMjMyLCJpYXQiOjE2NTEwNzgwMTMsImp0aSI6IjljNWI1MDQ5NTczMjRjMWVhYzFlZDVlMWNlNDc5ZjdjIiwidXNlcl9pZCI6Mn0.KqArVN93kPiu3H-HRciEi5tecdzAe68ZJT-Mbfadc5Y",
 									"type": "string"
 								}
 							]
@@ -732,14 +740,14 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "is_sale",
-									"value": "True",
+									"key": "",
+									"value": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/market/imageobject/6/change_status/",
+							"raw": "http://127.0.0.1:8000/market/imageobject/1/change_status/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -751,7 +759,7 @@
 							"path": [
 								"market",
 								"imageobject",
-								"6",
+								"1",
 								"change_status",
 								""
 							]
@@ -778,6 +786,32 @@
 								"market",
 								"imageobject",
 								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change image info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/market/imageobject/1/change_info/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"market",
+								"imageobject",
+								"1",
+								"change_info",
 								""
 							]
 						}
