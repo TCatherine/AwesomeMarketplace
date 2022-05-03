@@ -1,12 +1,12 @@
 .catalog-entity {
     position: absolute;
-    width: 46%;
-    height: 400%;
+    width: 45%;
+    height: 40%;
     left: 0%;
     top: 100%;
 
     background: #FFFFFF;
-    border: 2px solid #ff0000;
+    border: #184870 dashed 1px;
     box-sizing: border-box;
 }
 

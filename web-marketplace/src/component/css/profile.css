@@ -48,7 +48,7 @@
     width: 90%;
     height: 30%;
     left: 5%;
-    top: 5%;
+    top: 2%;
     height: auto;
 
     text-align: left;
@@ -62,8 +62,8 @@
     position: absolute;
     width: 90%;
     left: 5%;
-    top: 45%;
-    height: max-content;
+    top: 40%;
+    height: 60%;
     text-align: left;
     font-family: 'Nexa Light';
     font-style: normal;
@@ -355,9 +355,9 @@
 .button-new {
     position: absolute;
     left: 76.3%;
-    height: 95%;
+    height: 10%;
     width: 20%;
-    top: 0%;
+    top: 3%;
 
     background: #FFFFFF;
     border-radius: 10px; 
@@ -372,4 +372,15 @@
     color: #184870;
     text-decoration: none; 
 
+}
+
+#catalog-list {
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }

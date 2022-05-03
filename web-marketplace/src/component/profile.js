@@ -36,14 +36,13 @@ export default class Profile extends Component {
                     <ProfilePassword/>
                 </div>
                 <div className='profile-entites'>
-                    <div className='history'>HISTORY
-                    </div>
+                    <div className='history'>HISTORY</div>
                     <ProfileHistory/>
                     <div className='entites-line'/>
                     <div className='jawel'>
-                    <div className='jawel-text'>JAWEL</div>
-                    <Link to="/add" className='button-new'>new</Link>
-                    <ProfileCatalog/>
+                        JAWEL
+                        <Link to="/add" className='button-new'>new</Link>
+                        <ProfileCatalog/>
                     </div>
                 </div>
             </div>
