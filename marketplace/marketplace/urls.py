@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from .market.views import ServePrivateImages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('marketplace.auth.urls')),
     path('market/', include('marketplace.market.urls')),
-    path('blockchain/', include('marketplace.blockchain.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('blockchain/', include('marketplace.blockchain.urls')),
+    # handle private
+    path('store/private_access/<str:name>', ServePrivateImages.as_view())
+] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

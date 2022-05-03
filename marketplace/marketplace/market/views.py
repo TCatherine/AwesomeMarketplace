@@ -1,5 +1,7 @@
+from http import HTTPStatus
+
 from django.shortcuts import redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework import generics
 
@@ -20,6 +22,7 @@ class GetPublicImageUrl(APIView):
             return JsonResponse({'error': 'No such item exist'})
 
         return JsonResponse({'public_image': url})
+
 
 class SetImageObjectView(generics.CreateAPIView):
     queryset = ImageObject.objects.all()
@@ -59,6 +62,10 @@ class ShowPrivateImageCatalogView(APIView):
         except:
             return JsonResponse({'objects': 'Error'})
         images_list = [ShowPrivateImageObjectSerializer(im, context={'request': request}).data for im in images]
+
+        for img in images_list:
+            img['private_image'] = img['private_image'].replace('private_images', 'private_access')
+
         return JsonResponse({'objects': images_list})
 
 class ChangeStatusView(generics.UpdateAPIView):
@@ -82,7 +89,30 @@ class UserTransactionsView(APIView):
         # redirect to view from blockchain app
         return redirect('get user transactions', pk=pk)
 
+
 class ChangeImageInfoView(generics.UpdateAPIView):
     queryset = ImageObject.objects.all()
     permission_classes = (IsAuthenticated,)
     serializer_class = ChangeImageObjectSerializer
+
+
+class ServePrivateImages(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, name):
+        try:
+            found = False
+            images = ImageObject.objects.filter(owner=request.user)
+            for img in images:
+                if ShowPrivateImageObjectSerializer(img, context={'request': request})\
+                        .data['private_image'].endswith('/store/private_images/' + name):
+                    found = True
+                    break
+            if not found:
+                return JsonResponse({}, status=HTTPStatus.FORBIDDEN)
+            response = HttpResponse()
+            response['X-Accel-Redirect'] = '/store/private_images/' + name
+            response['Content-Type'] = 'image/' + name.split('.')[-1]
+            return response
+        except ImageObject.DoesNotExist:
+            return JsonResponse({"DEBUG": '/store/private_images/' + name}, status=HTTPStatus.NOT_FOUND)
