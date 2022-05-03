@@ -39,7 +39,7 @@ export default class ProfileHistory extends Component {
     getComponent = (entity, idx) => {
         return (
         <p key='{d.name}' className='transaction'>    
-            <div className='text-transaction'>unknow: [buyer: {entity.buyer}] [owner: {entity.owner}] [amount: {entity.amount}]</div>
+            <div className='text-transaction'>unknow: [buyer: {entity.buyer}] [owner: {entity.seller}] [amount: {entity.amount}]</div>
             <img src={user} className='demo-img'/>
         </p>);
     }
