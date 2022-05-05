@@ -115,4 +115,4 @@ class ServePrivateImages(APIView):
             response['Content-Type'] = 'image/' + name.split('.')[-1]
             return response
         except ImageObject.DoesNotExist:
-            return JsonResponse({"DEBUG": '/store/private_images/' + name}, status=HTTPStatus.NOT_FOUND)
+            return JsonResponse({"error": '/store/private_images/' + name}, status=HTTPStatus.NOT_FOUND)

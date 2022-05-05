@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8877a11e-5f05-4827-b26f-8e206cc16951",
+		"_postman_id": "7554b096-df8e-49ca-b998-f70748693376",
 		"name": "REST API testing",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -55,12 +55,10 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:8000/auth/get-code/",
-									"protocol": "http",
+									"raw": "{{URL}}/auth/get-code/",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8000",
 									"path": [
 										"auth",
 										"get-code",
@@ -119,18 +117,16 @@
 										},
 										{
 											"key": "code",
-											"value": "8946252",
+											"value": "2391935",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "http://localhost:8000/auth/login/",
-									"protocol": "http",
+									"raw": "{{URL}}/auth/login/",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8000",
 									"path": [
 										"auth",
 										"login",
@@ -200,12 +196,10 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:8000/auth/login/",
-									"protocol": "http",
+									"raw": "{{URL}}/auth/login/",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8000",
 									"path": [
 										"auth",
 										"login",
@@ -258,12 +252,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/auth/register/",
-							"protocol": "http",
+							"raw": "{{URL}}/auth/register/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"auth",
 								"register",
@@ -314,12 +306,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/auth/login/refresh/",
-							"protocol": "http",
+							"raw": "{{URL}}/auth/login/refresh/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"auth",
 								"login",
@@ -366,12 +356,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/auth/change_password/{{user_id}}/",
-							"protocol": "http",
+							"raw": "{{URL}}/auth/change_password/{{user_id}}/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"auth",
 								"change_password",
@@ -403,26 +391,22 @@
 								{
 									"key": "username",
 									"value": "{{username}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "first_name",
 									"value": "1",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "last_name",
 									"value": "2",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "{{email}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "is_2fa_enabled",
@@ -432,12 +416,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/auth/update_profile/{{user_id}}/",
-							"protocol": "http",
+							"raw": "{{URL}}/auth/update_profile/{{user_id}}/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"auth",
 								"update_profile",
@@ -451,19 +433,29 @@
 				{
 					"name": "Get user info",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access-token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "{{URL}}/auth/user/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								""
+							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				}
@@ -495,12 +487,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:8000/market/imageobject/6/deal/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/imageobject/6/deal/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"imageobject",
@@ -528,12 +518,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/market/user-transactions/2/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/user-transactions/2/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"user-transactions",
@@ -560,12 +548,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/blockchain/get-last-ta-status/",
-							"protocol": "http",
+							"raw": "{{URL}}/blockchain/get-last-ta-status/",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"blockchain",
 								"get-last-ta-status",
@@ -626,15 +612,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/market/imageobject/add/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/imageobject/add/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"imageobject",
@@ -647,11 +628,8 @@
 				},
 				{
 					"name": "Show catalog",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
@@ -669,15 +647,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/market/images-catalog/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/images-catalog/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"images-catalog",
@@ -703,15 +676,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/market/own-catalog/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/own-catalog/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"own-catalog",
@@ -729,7 +697,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUxMTIxMjMyLCJpYXQiOjE2NTEwNzgwMTMsImp0aSI6IjljNWI1MDQ5NTczMjRjMWVhYzFlZDVlMWNlNDc5ZjdjIiwidXNlcl9pZCI6Mn0.KqArVN93kPiu3H-HRciEi5tecdzAe68ZJT-Mbfadc5Y",
+									"value": "{{access-token}}",
 									"type": "string"
 								}
 							]
@@ -740,26 +708,21 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "",
-									"value": "",
+									"key": "is_sale",
+									"value": "True",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/market/imageobject/1/change_status/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/imageobject/10/change_status/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"imageobject",
-								"1",
+								"10",
 								"change_status",
 								""
 							]
@@ -773,45 +736,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/market/imageobject/6/",
-							"protocol": "http",
+							"raw": "{{URL}}/market/imageobject/9/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{URL}}"
 							],
-							"port": "8000",
 							"path": [
 								"market",
 								"imageobject",
-								"6",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Change image info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/market/imageobject/1/change_info/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"market",
-								"imageobject",
-								"1",
-								"change_info",
+								"9",
 								""
 							]
 						}
@@ -880,6 +812,16 @@
 		{
 			"key": "user_id",
 			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "URL",
+			"value": "http://awesomewebmarketplace.ru",
+			"type": "string"
+		},
+		{
+			"key": "tmp",
+			"value": "http://awesomewebmarketplace.ru",
 			"type": "string"
 		}
 	]
