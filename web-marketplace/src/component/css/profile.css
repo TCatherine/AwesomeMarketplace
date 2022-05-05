@@ -1,10 +1,10 @@
 .info-user{
     /* Rectangle 2 */
     position: absolute;
-    height: 75%;
+    height: 80%;
     left: 2%;
     width: 35%;
-    top: 25%;
+    top: 20%;
 
     background: #FFFFFF;
     border: 3px solid #FF0606;
@@ -74,11 +74,11 @@
 
 .photo-user {
     position: absolute;
-    left: 30%;
-    right: 30%;
-    top: -20%;
+    left: 35%;
+    right: 35%;
+    top: -15%;
     /* height: 40%; */
-    width: 40%;
+    width: 30%;
     border-radius: 50%;
     background: #FFFFFF;
     border: 3px solid #FF0000;
@@ -88,7 +88,7 @@
 .profile-first-name {
     /* first */
     position: absolute;
-    top:25%;
+    top:20%;
     left:10%;
     width: 39%;
     border-top-style: hidden;
@@ -118,7 +118,7 @@
 .profile-second-name {
     /* first */
     position: absolute;
-    top:25%;
+    top:20%;
     left:51%;
     width: 39%;
     border-top-style: hidden;
@@ -149,7 +149,7 @@
 .profile-user-name {
     /* username */
     position: absolute;
-    top:37%;
+    top:28%;
     left:10%;
     width: 80%;
     outline: none;
@@ -182,7 +182,7 @@
 /* email */
 
     position: absolute;
-    top:45%;
+    top:35%;
     left:10%;
     width: 80%;
 
@@ -213,7 +213,7 @@
 
 .balance{
     position: absolute;
-    top:50%;
+    top:40%;
     left:10%;
     width: 80%;
 
@@ -371,7 +371,6 @@
     font-size: 1.5vw;
     color: #184870;
     text-decoration: none; 
-
 }
 
 #catalog-list {
