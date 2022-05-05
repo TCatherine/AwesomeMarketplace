@@ -14,22 +14,13 @@ export default class Login extends Component {
         error_username : "",
         error_password : "",
         error_sum: ""
-        }
-       
+        }    
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        axios.defaults.headers.common['Authorization'] = null;
-        
-        const data = {
-            username: this.username,
-            password: this.password
-        }
-
+    handle2fa = (data) => {
         axios.post('auth/get-code/', data).then(
             res => {
-                this.setState({loggedIn: true});
+                this.setState({is_2fa: true});
                 localStorage.setItem('token', res.data.token);
                 }
             )
@@ -44,12 +35,46 @@ export default class Login extends Component {
                 })
             }
         )
+    }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        axios.defaults.headers.common['Authorization'] = null;
+        
+        const data = {
+            username: this.username,
+            password: this.password
+        }
+
+        axios.post('auth/login/', data).then(
+            res => {
+                this.setState({loggedIn: true},()=> {console.log(true)});
+                localStorage.setItem('access', res.data.access);
+                console.log(res.data);
+                console.log(localStorage.getItem('access'));
+                }
+            )
+            .catch((error) => {
+                console.log(error.response);
+                if (error.response.data['2fa'])
+                    this.handle2fa(data);
+                var check = (data) => {if (data && Array.isArray(data)) return data[0]; return data};
+
+                this.setState({
+                    error_username : check(error.response.data.username),
+                    error_password : check(error.response.data.password),
+                    error_sum: check(error.response.data.detail)
+                })
+            }
+            );
     }
 
 
     render() {
         if (this.state.loggedIn) {
+            return <Navigate to={'/'}/>;
+        }
+        if (this.state.is_2fa) {
             return <Navigate to={'/2fa'}/>;
         }
         return (
