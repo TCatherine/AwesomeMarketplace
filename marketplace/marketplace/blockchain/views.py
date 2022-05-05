@@ -24,7 +24,7 @@ class GetUserTransactions(APIView):
         # Blockchain miner itself supports this request for now but its better to
         # return transactions from confirmed transactions stash, because miner can be restarted and t/a will be lost
         # r = requests.get(
-        #     "http://" + settings.BLOCKCHAIN_HOST + ":5000/chain/" + User.objects.get(pk=pk).username
+        #     "http://" + settings.BLOCKCHAIN_HOST + ":5000/transactions/chain/" + User.objects.get(pk=pk).username
         # )
         # if r.status_code != 200:
         #     raise ValueError("Error occures while getting chain")
@@ -77,7 +77,7 @@ class GetChainView(APIView):
 
     def get(self, request):
         r = requests.get(
-            "http://" + settings.BLOCKCHAIN_HOST + ":5000/chain"
+            "http://" + settings.BLOCKCHAIN_HOST + ":5000/transactions/chain"
         )
         if r.status_code != 200:
             raise ValueError("Error occures while getting chain")

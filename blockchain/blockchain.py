@@ -201,7 +201,7 @@ node_identifier = str(uuid4()).replace('-', '')
 blockchain = Blockchain()
 
 
-@app.route('/mine', methods=['GET'])
+@app.route('/transactions/mine', methods=['GET'])
 def mine():
     # We run the proof of work algorithm to get the next proof...
     last_block = blockchain.last_block
@@ -250,7 +250,7 @@ def new_transaction():
     return jsonify(response), 201
 
 
-@app.route('/chain', methods=['GET'])
+@app.route('/transactions/chain', methods=['GET'])
 def full_chain():
     response = {
         'chain': blockchain.chain,
@@ -259,7 +259,7 @@ def full_chain():
     return jsonify(response), 200
 
 
-@app.route('/chain/<user_name>', methods=['GET'])
+@app.route('/transactions/chain/<user_name>', methods=['GET'])
 def user_chain(user_name):
     user_chain = [block for block in blockchain.chain if any(tr['sender'] == str(user_name) or tr['recipient'] == str(user_name) for tr in block['transactions'])]
 

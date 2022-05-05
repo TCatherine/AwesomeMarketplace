@@ -36,7 +36,7 @@ def create_transaction(buyer, seller, amount, item_id):
         if r.status_code != 201:
             raise ValueError("New transaction creating error response")
 
-        r = requests.get("http://" + settings.BLOCKCHAIN_HOST + ":5000/mine")
+        r = requests.get("http://" + settings.BLOCKCHAIN_HOST + ":5000/transactions/mine")
         if r.status_code != 200:
             raise ValueError("Mining block error")
     except Exception as e:
