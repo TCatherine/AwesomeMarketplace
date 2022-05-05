@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from .tasks import create_transaction, confirm_transaction
 from django.http import HttpResponse, JsonResponse
-from ..market.models import SellableObject
+from ..market.models import SellableObject, ImageObject
 from ..market.models import CustomUser as User
 from ..blockchain.models import Transaction, ConfirmedTransaction
 from django.conf import settings
@@ -12,6 +12,8 @@ from django.core import serializers
 import json
 
 import requests
+
+from ..market.serializers import ShowPublicImageObjectSerializer
 
 
 class GetUserTransactions(APIView):
@@ -37,6 +39,17 @@ class GetUserTransactions(APIView):
 
         users_ta = json.loads(users_ta)
         users_ta = [ta["fields"] for ta in users_ta]
+
+        for ta in users_ta:
+            try:
+                ta['buyer'] = User.objects.get(pk=ta['buyer']).username
+                ta['seller'] = User.objects.get(pk=ta['seller']).username
+                image = ImageObject.objects.get(pk=ta['item'])
+                ta['item'] = image.name
+                ta['item_url'] = ShowPublicImageObjectSerializer(image, context={'request': request}).data['public_image']
+            except (User.DoesNotExist, ImageObject.DoesNotExist) as e:
+                pass
+
         return JsonResponse({"transactions": users_ta})
 
 

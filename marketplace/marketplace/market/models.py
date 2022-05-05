@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 class CustomUser(AbstractUser):
-    is_2fa_enabled = models.BooleanField(default=False)
+    is_2fa_enabled = models.BooleanField(default=True)
     balance = models.IntegerField(null=False, blank=False, default=0)
     last_transaction_id = models.IntegerField(null=False, blank=False, default=-1)
 

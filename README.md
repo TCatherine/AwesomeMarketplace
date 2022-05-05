@@ -13,6 +13,33 @@ On Windows docker works under wsl (recommended) or hyper-v (both built-in Window
 
 ### Run containers
 
+***
+**NOTE**
+Please, use now latest docker-compose files with nginx. To do that you should pass option to docker-compose command to specify filename of .yml file.
+
+- docker-compose-nossl.yml - latest nginx-integrated docker without HTTPS
+- docker-compose-ssl.yml - latest nginx-integrated docker with HTTPS ONLY
+
+To specify filename pass `-f docker-compose-filename.yml` flag to docker-compose command.
+For example: 
+
+```commandline
+docker-compose -f docker-compose-filename.yml up -d
+docker-compose -f docker-compose-filename.yml logs -f
+docker-compose -f docker-compose-filename.yml down
+```
+
+You also should prepare your machine to use this dockers (admin/root required):
+- Windows: To C:\Windows\System32\drivers\etc\hosts add string
+    `192.168.30.136 awesomewebmarketplace.ru`, where replace 192.168.30.136 to your server address, for example to `localhost`
+- Linux: To /etc/hosts add equivalent string.
+
+You should not connect to http/https nginx docker over ip.
+I guess that android emulator will resolve domain names over windows host and I don't think there will be any problem. But if any problem occures old docker file is works, but deprecated.
+In future you can change IP in hosts file to our YA Cloud server IP and use all as before.
+If you server deployed on different machine from host, then you should add on your server machine string `127.0.0.1 awesomewebmarketplace.ru` in hosts file.
+***
+
 To build containers execute next commands from root project folder (where docker-compose.yml places):
 
 ```commandline

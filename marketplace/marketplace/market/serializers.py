@@ -5,11 +5,13 @@ from rest_framework.test import APIRequestFactory
 
 from django.http import JsonResponse
 
+
 class ShowPublicImageObjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageObject
         fields = ['id', 'name', 'creation_date', 'last_updated',
                   'price', 'owner', 'public_image', 'is_sale']
+
 
 class ShowPrivateImageObjectSerializer(serializers.ModelSerializer):
     class Meta:
