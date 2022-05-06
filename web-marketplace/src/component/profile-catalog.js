@@ -49,7 +49,7 @@ export default class ProfileCatalog extends Component {
         left_pos = 0 + 55*remainder + '%';
 
         let k = Math.floor(idx/2);
-        top_pos = 100 + k*500+ '%';
+        top_pos = k*50+ '%';
 
 
         if (entity!==undefined){
@@ -91,6 +91,6 @@ export default class ProfileCatalog extends Component {
         let idx = 0;
         const listItems =  this.state.entities.map((ent) => this.getComponent(ent, idx++));
 
-        return listItems;
+        return <div id='catalog-list'>{listItems}</div>;
     }
 }

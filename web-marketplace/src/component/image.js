@@ -22,32 +22,16 @@ class Image extends Component {
             public_path: this.props.data.public_path,
             private_path: this.props.data.private_path
         }
-        this.change_button_name();
-    }
-
-    change_button_name() {
-        if (this.state.is_sale) {
-            this.name_sale = "not for sell";
-        }
-        else {
-            this.name_sale = "sell";
-        }
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        var func = (is_sale) => {if (is_sale) return "for sale"; return "not for sale"};
-        let url = 'market/imageobject/' + this.state.id + '/change_status/';
 
-        axios.put(url).then(
+        let url = 'market/imageobject/' + this.state.id + '/deal/';
+        axios.get(url).then(
             res => {
                     console.log(res);
-                    this.setState({
-                        is_sale: res.data.is_sale,
-                        is_sale_str: func(res.data.is_sale)
-                    }, () => console.log(this.state));
-                    this.change_button_name();
-                toast.success('Successfully change!', {
+                toast.success('Transaction initiated', {
                     position: "bottom-right", autoClose: 1000, hideProgressBar: false,
                     closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
                 });
@@ -56,7 +40,12 @@ class Image extends Component {
             },
             error => {
                 console.log(error.response);
-                toast.error('Something went wrong', {
+                let out;
+                if (error.response.data.Status)
+                    out = error.response.data.Status;
+                else 
+                    out = error.response.data.details;
+                toast.error(out, {
                     position: "bottom-right", autoClose: 1000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
                 });

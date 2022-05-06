@@ -1,0 +1,114 @@
+.wrg-toggle {
+    position: absolute;
+    top: 47%;
+    width: 10%;
+    left: 45%;
+    touch-action: pan-x;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: #184870;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .wrg-toggle-input {
+    border: 0;
+    opacity: .0;
+    height: 100%;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%; 
+  }
+  
+  .wrg-toggle-check, .wrg-toggle-uncheck {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .wrg-toggle-check {
+    left: 8px;
+  }
+  .wrg-toggle-uncheck {
+    opacity: 1;
+    right: 10px;
+  }
+  
+  .wrg-toggle-uncheck span, 
+  .wrg-toggle-check span {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 20%;
+    font-family: 'Nexa';
+    font-style: normal;
+    font-weight: 80vw;
+    font-size: 1.1vw;
+    line-height: 1vw;
+    text-align: bottom ;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+  
+  .wrg-toggle-container{
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: #184870;
+    transition: all .2s ease;
+  }
+
+  .wrg-toggle-name{
+    position: absolute;
+    left: -200%;
+    top: 20%;
+     text-align: center;
+    font-family: 'Nexa Bold';
+    font-style: normal;
+    font-size: 1vw;
+    line-height: 100%;
+    color: #184870;
+  }
+  
+  .wrg-toggle-circle{
+    transition: all .5s cubic-bezier(.23,1,.32,1) 0ms;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #4d4d4d;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all .25s ease;
+  }
+
+  .wrg-toggle--checked .wrg-toggle-check{
+    opacity: 1;
+  }
+  .wrg-toggle--checked .wrg-toggle-uncheck {
+    opacity: 0;
+  }
+  .wrg-toggle--checked .wrg-toggle-circle {
+    left: 27px;
+  }

@@ -1,0 +1,45 @@
+#content{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 29%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    /*height: 100%;*/
+}
+
+.transaction {
+    position: absolute;
+    border: #184870 dashed 1px;
+    height: 30%;
+    width: 99%;
+
+    /* text-align: center; */
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1.5vw;
+    color: #184870;
+}
+
+.demo-img {
+    position: absolute;
+    height: 98%;
+    max-width: 20%;
+    left: 1%;
+    top: 1%;
+}
+
+.text-transaction{
+    position: absolute;
+    top: 25%;
+    width: 80%;
+    left: 20%;
+    height: 100%;
+    text-align: center;
+    font-family: 'Nexa Light';
+    font-style: normal;
+    font-size: 1.5vw;
+    color: #184870;
+}
