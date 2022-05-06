@@ -267,10 +267,8 @@
     color: #184870;
 }
 
+.private-img
 .public-img {
-    width: 100%;
-}
-
-.private-img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }

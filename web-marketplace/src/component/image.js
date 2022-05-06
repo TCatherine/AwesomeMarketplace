@@ -44,12 +44,13 @@ class Image extends Component {
                 if (error.response.data.Status)
                     out = error.response.data.Status;
                 else 
-                    out = error.response.data.details;
+                    out = error.response.data.detail;
                 toast.error(out, {
                     position: "bottom-right", autoClose: 1000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
                 });
             });
+       
     }
 
     render() {
@@ -62,7 +63,7 @@ class Image extends Component {
                         <div className='info-text'>INFORMATION</div>
                         <div className='name'>Name: {this.state.name}</div>
                         <div className='price'>Price: {this.state.price}</div>
-                        {/* <div className='owner'>Owner: {this.state.owner.username}</div> */}
+                        <div className='owner'>Owner: {this.state.owner}</div>
                         <div className='creation-date'>Cration Date: {this.state.creation_date}
                         </div>
                         <div className='update-date'>Update Date: {this.state.last_updated}

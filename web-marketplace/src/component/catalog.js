@@ -25,8 +25,8 @@ export default class Catalog extends Component {
             batch_num: 0,
             number: 8
         }
-        axios.defaults.headers.common['Authorization'] = null;
-        axios.post('market/images-catalog/', data).then(
+        // axios.defaults.headers.common['Authorization'] = null;
+        axios.post('market/images-catalog/', data, {headers:{ 'Authorization': null}}).then(
             res => {
                 this.setState({
                     entities:  [...res.data.objects]
@@ -58,7 +58,7 @@ export default class Catalog extends Component {
                 public_path: entity.public_image,
                 creation_date: entity.creation_date,
                 last_updated: entity.last_updated,
-                owner: this.state.user
+                owner: entity.owner
             }
         }
         else {
