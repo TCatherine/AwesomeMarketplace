@@ -53,6 +53,16 @@ export default class ProfileCatalog extends Component {
 
 
         if (entity!==undefined){
+            axios.get(this.state.private_path, { responseType: 'arraybuffer' },)
+            .then(response => {
+                const base64 = btoa(
+                new Uint8Array(response.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    '',
+                ),
+                );
+                this.setState({ image: "data:;base64," + base64 }, ()=>console.log());
+            });
             
             data = {
                 id: entity.id,
@@ -64,7 +74,8 @@ export default class ProfileCatalog extends Component {
                 private_path: entity.private_image,
                 creation_date: entity.creation_date,
                 last_updated: entity.last_updated,
-                owner: this.state.user
+                owner: this.state.user,
+                image: this.state.image
             }
         }
         else {
@@ -80,7 +91,7 @@ export default class ProfileCatalog extends Component {
                     <div  className='entity-public-text'>public</div>
                 </div>
                 <div className='entity-private'>
-                    <img src={data.private_path} alt='public' className='entity-public-img'/>
+                    <img src={data.image} alt='public' className='entity-public-img'/>
                     <div  className='entity-public-text'>private</div>
                 </div>
             </Link>

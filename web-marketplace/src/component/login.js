@@ -83,13 +83,13 @@ export default class Login extends Component {
                 <div className='welcome'>Sign in to Marketplace</div>
             <div className='username-signup' align="left">
                 <label className='name-signin'>Username</label>
-                <input type='text' className='form-control-signup' placeholder='Username'
+                <input type='text' className='form-control-signup-login' placeholder='Username'
                 onChange={e => this.username = e.target.value}/>
                 <label className='error'>{this.state.error_username}</label>
             </div>
             <div className='password-signup' align="left">
                     <label className='name-signin'>Password</label>
-                    <input type='text' className='form-control-signup' placeholder='*** ***'
+                    <input type='password' className='form-control-signup-password' placeholder='*** ***'
                     onChange={e => this.password = e.target.value}/>
                      <label className='error'>{this.state.error_password}</label>
             </div>   

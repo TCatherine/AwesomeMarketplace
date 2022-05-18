@@ -1,41 +1,166 @@
 
-.name {
+.name-input {
 /* Username */
 position: absolute;
 width: 100%;
 left: 0%;
 top: 0%;
+height: 15%;
+font-size: 0.7vw;
 
 font-family: 'Nexa';
 font-style: normal;
-font-weight: 50%;
-font-size: 60%;
-line-height: 50%;
 
 color: #FFFFFF;
 }
 
-.form-control{
+.form-control-username{
 /* Rectangle 4 */
 
 position: absolute;
 left: 0%;
 right: 0%;
-bottom: 15%;
-height: 50%;
+bottom: 0%;
+height: 60%;
 
-background: #FFFFFF;
+background: white url(./../svg/blue-user.png) no-repeat 1px 1px;
+background-size: 25px;
+padding-left:10%; 
 border: 1px solid #FF0000;
 
 border-radius: 5px; 
 
-font-size: 75%;
+text-align: center;
+font-size: 1vw;
+
 line-height: 100%;
 font-weight: 10;
 color: #16456B;
+
 }
 
-.form-control::placeholder{
+.form-control-fname{
+    /* Rectangle 4 */
+    
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    height: 60%;
+    
+    background: white url(./../svg/blue-name.png) no-repeat 1px 1px;
+    background-size: 25px;
+    padding-left:10%; 
+    border: 1px solid #FF0000;
+    
+    border-radius: 5px; 
+    
+    text-align: center;
+    font-size: 1vw;
+    
+    line-height: 100%;
+    font-weight: 10;
+    color: #16456B;
+    
+    }
+
+.form-control-mail{
+    /* Rectangle 4 */
+    
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    height: 60%;
+    
+    background: white url(./../svg/blue-mail.png) no-repeat 1px 1px;
+    background-size: 25px;
+    padding-left:10%; 
+    border: 1px solid #FF0000;
+    
+    border-radius: 5px; 
+    
+    text-align: center;
+    font-size: 1vw;
+    
+    line-height: 100%;
+    font-weight: 10;
+    color: #16456B;        
+}
+
+.form-control-password{
+    /* Rectangle 4 */
+    
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    height: 60%;
+    
+    background: white url(./../svg/blue-key.png) no-repeat 1px 1px;
+    background-size: 25px;
+    padding-left:10%; 
+    border: 1px solid #FF0000;
+    
+    border-radius: 5px; 
+    
+    text-align: center;
+    font-size: 1vw;
+    
+    line-height: 100%;
+    font-weight: 10;
+    color: #16456B;        
+}
+
+.form-control-confirm{
+    /* Rectangle 4 */
+    
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    height: 60%;
+    
+    background: white url(./../svg/blue-confirm.png) no-repeat 1px 1px;
+    background-size: 25px;
+    padding-left:10%; 
+    border: 1px solid #FF0000;
+    
+    border-radius: 5px; 
+    
+    text-align: center;
+    font-size: 1vw;
+    
+    line-height: 100%;
+    font-weight: 10;
+    color: #16456B;        
+}
+
+.form-control-email::placeholder{
+    text-align: center;
+    font-size: 75%;
+    line-height: 100%;    
+}
+
+.form-control-password::placeholder{
+    text-align: center;
+    font-size: 75%;
+    line-height: 100%;    
+}
+
+.form-control-confirm::placeholder{
+    text-align: center;
+    font-size: 75%;
+    line-height: 100%;    
+}
+
+.form-control-fname::placeholder{
+    text-align: center;
+    font-size: 75%;
+    line-height: 100%;    
+}
+
+.form-control-username::placeholder{
     text-align: center;
     font-size: 75%;
     line-height: 100%;
@@ -45,7 +170,7 @@ color: #16456B;
 
 position: absolute;
 width: 93%;
-height: 5%;
+height: 7%;
 left: 3%;
 right: 3%;
 top: 21%;
@@ -55,7 +180,7 @@ top: 21%;
 .first-name {
     position: absolute;
     width: 93%;
-    height: 5%;
+    height: 7%;
     left: 3%;
     right: 3%;
     top: 30%;    
@@ -64,7 +189,7 @@ top: 21%;
 .second-name {
     position: absolute;
     width: 93%;
-    height: 5%;
+    height: 7%;
     left: 3%;
     right: 3%;
     top: 39%;    
@@ -73,7 +198,7 @@ top: 21%;
 .email {
     position: absolute;
     width: 93%;
-    height: 5%;
+    height: 7%;
     left: 3%;
     right: 3%;
     top: 48%;    
@@ -82,7 +207,7 @@ top: 21%;
 .password {
     position: absolute;
     width: 93%;
-    height: 5%;
+    height: 7%;
     left: 3%;
     right: 3%;
     top: 57%;    
@@ -91,7 +216,7 @@ top: 21%;
 .reenter-password {
     position: absolute;
     width: 93%;
-    height: 5%;
+    height: 7%;
     left: 3%;
     right: 3%;
     top: 66%;    

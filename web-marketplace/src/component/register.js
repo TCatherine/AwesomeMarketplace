@@ -63,38 +63,38 @@ export default class Register extends Component {
             <div className='form'>
                 <div className='welcome'>Welcome to Marketplace</div>
                 <div className='username' align="left">
-                    <label className='name'>Username</label>
-                    <input type='text' className='form-control' placeholder='Username'
+                    <label className='name-input'>Username</label>
+                    <input type='text' className='form-control-username' placeholder='Username'
                     onChange={e => this.username = e.target.value}/>
                     <label className='error'>{this.state.error_username}</label>
                 </div>
                 <div className='first-name' align="left">
-                    <label className='name'>First Name</label>
-                    <input type='text' className='form-control' placeholder='First Name'
+                    <label className='name-input'>First Name</label>
+                    <input type='text' className='form-control-fname' placeholder='First Name'
                     onChange={e => this.first_name = e.target.value}/>
                      <label className='error'>{this.state.error_first_name}</label>
                 </div>
                 <div className='second-name' align="left">
-                    <label className='name'>Second Name</label>
-                    <input type='text' className='form-control' placeholder='Second Name'
+                    <label className='name-input'>Second Name</label>
+                    <input type='text' className='form-control-fname' placeholder='Second Name'
                     onChange={e => this.second_name = e.target.value}/>
                     <label className='error'>{this.state.error_last_name}</label>
                 </div>
                 <div className='email' align="left">
-                    <label className='name'>Email</label>
-                    <input type='text' className='form-control' placeholder='example@mail.com'
+                    <label className='name-input'>Email</label>
+                    <input type='text' className='form-control-mail' placeholder='example@mail.com'
                     onChange={e => this.email = e.target.value}/>
                      <label className='error'>{this.state.error_email}</label>
                 </div>
                 <div className='password' align="left">
-                    <label className='name'>Password</label>
-                    <input type='text' className='form-control' placeholder='*** ***'
+                    <label className='name-input'>Password</label>
+                    <input type='password' className='form-control-password' placeholder='*** ***'
                     onChange={e => this.password = e.target.value}/>
                      <label className='error'>{this.state.error_password}</label>
                 </div>
                 <div className='reenter-password' align="left">
-                    <label className='name'>Re-enter password</label>
-                    <input type='text' className='form-control' placeholder='*** ***'
+                    <label className='name-input'>Re-enter password</label>
+                    <input type='password' className='form-control-confirm' placeholder='*** ***'
                     onChange={e => this.confirm_password = e.target.value}/>
                      <label className='error'>{this.state.error_password2}</label>
                 </div>
