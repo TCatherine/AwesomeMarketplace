@@ -1,6 +1,5 @@
 
 import React, {Component} from 'react';
-import {useParams} from "react-router-dom";
 import { toast } from 'react-toastify';
 import './css/image.css'
 import axios from 'axios';
@@ -70,7 +69,7 @@ class Image extends Component {
                         </div>
                     </div>
                     <button className='button-change'>buy</button>
-                    <img src={this.state.public_path}  className='img'/>
+                    <img src={this.state.public_path} alt='public' className='img'/>
                 </div>
             </form>
         )
@@ -78,10 +77,7 @@ class Image extends Component {
 }
 
 const WrappedImage = props => { 
-    let { Id } = useParams();
     const location = useLocation();
-    // console.log(Id);
-    // console.log(location);
     return <Image data={location.state.data}/> 
 }
 

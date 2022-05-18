@@ -1,11 +1,9 @@
 
-import React, {Component, Checkbox} from 'react';
-import {useParams} from "react-router-dom";
+import React, {Component} from 'react';
 import { toast } from 'react-toastify';
 import './css/image.css'
 import './css/add.css'
 import axios from 'axios';
-import { useLocation } from 'react-router-dom'
 import upload_icon from './svg/upload-icon.png'
 
 
@@ -99,22 +97,26 @@ export default class ImageAdditor extends Component {
                      <div className="button_upload_public_img">
                             <input name="public" type="file" id="public" className="input_file" onChange={event=>{this.onImageChange(event, true)}}/>
                             <label for="public" className="input_file-button">
-                                <span className="input_file-icon-wrapper"><img className="input_file-icon" src={upload_icon}/></span>
+                                <span className="input_file-icon-wrapper">
+                                    <img className="input_file-icon" alt='icon' src={upload_icon}/>
+                                </span>
                                 <span className="input_file-button-text">public image</span>
                             </label>
                     </div>
                     <div className="button_upload_private_img">
                         <input name="private" type="file" id="private" className="input_file" onChange={event=>{this.onImageChange(event, false)}}/>
                         <label for="private" className="input_file-button">
-                            <span className="input_file-icon-wrapper"><img className="input_file-icon" src={upload_icon}/></span>
+                            <span className="input_file-icon-wrapper">
+                                <img className="input_file-icon" alt='icon' src={upload_icon}/>
+                            </span>
                             <span className="input_file-button-text">private image</span>
                         </label>
                     </div>  
                      <div className='upload_public_img'>
-                            <img src={this.state.preview_public_image} max-height="100%" max-width="100%"/>
+                            <img src={this.state.preview_public_image} alt='public' max-height="100%" max-width="100%"/>
                     </div>
                     <div className='upload_private_img'>
-                            <img src={this.state.preview_private_image} max-height="100%" max-width="100%"/>
+                            <img src={this.state.preview_private_image} alt='private' max-height="100%" max-width="100%"/>
                     </div>
                  </div>
         )

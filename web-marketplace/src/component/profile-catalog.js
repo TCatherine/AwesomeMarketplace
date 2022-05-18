@@ -76,11 +76,11 @@ export default class ProfileCatalog extends Component {
                 <div className='entity-price'>Price: {data.price}</div>
                 <div className='entity-sale'>{data.is_sale_str}</div>
                 <div className='entity-public'>
-                    <img src={data.public_path} className='entity-public-img'/>
+                    <img src={data.public_path} alt='private' className='entity-public-img'/>
                     <div  className='entity-public-text'>public</div>
                 </div>
                 <div className='entity-private'>
-                    <img src={data.private_path} className='entity-public-img'/>
+                    <img src={data.private_path} alt='public' className='entity-public-img'/>
                     <div  className='entity-public-text'>private</div>
                 </div>
             </Link>
