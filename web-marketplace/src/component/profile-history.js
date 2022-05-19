@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import "./css/profile-history.css";
 import user from './svg/1.png'
@@ -20,7 +19,7 @@ export default class ProfileHistory extends Component {
             res => {
                 this.setState({user: res.data}, ()=> console.log(res.data));
                 console.log(res.data);
-                const url = 'market/user-transactions/' + this.state.user.id + '/';
+                const url = 'market/user-transactions/' + res.data.id + '/';
                 axios.get(url).then(
                     res => {
                         this.setState({
@@ -40,8 +39,8 @@ export default class ProfileHistory extends Component {
         const shift_top = (5+idx*40) + '%';
         return (
         <p key='{d.name}' className='transaction' style={{top: shift_top}}>    
-            <div className='text-transaction'>unknow: [buyer: {entity.buyer}] [owner: {entity.seller}] [amount: {entity.amount}]</div>
-            <img src={user} className='demo-img'/>
+            <div className='text-transaction'>{entity.item}: [buyer: {entity.buyer}] [owner: {entity.seller}] [price: {entity.amount}]</div>
+            <img src={user} alt='demo'className='demo-img'/>
         </p>);
     }
 

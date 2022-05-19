@@ -7,7 +7,7 @@ import reportWebVitals from '../reportWebVitals';
 function Back(){
   return(
     <div className="background">
-      <img src={background} className="back"/>
+      <img src={background} alt='background' className="back"/>
     </div>
     );
 }

@@ -55,7 +55,7 @@ export default class Authentication extends Component {
                 <div className='welcome'> Two-factor authentication</div>
             <div className='code-2fa' align="left">
                 <label className='name-signin'>Code</label>
-                <input type='text' className='form-control-signup' placeholder='*** - ***'
+                <input type='text' className='form-control-code' placeholder='*** - ***'
                 onChange={e => this.code = e.target.value}/>
                 {/* TODO: query again! */}
                 <div className='try-again'>

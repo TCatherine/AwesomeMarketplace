@@ -72,7 +72,7 @@
     color: #FFFFFF;
     }
     
-.form-control-signup{
+.form-control-signup-login{
 /* Rectangle 4 */
 
 position: absolute;
@@ -81,18 +81,51 @@ right: 0%;
 bottom: 15%;
 height: 45%;
 
-background: #FFFFFF;
+background: white url(./../svg/blue-user.png) no-repeat 1px 1px;
+background-size: 25px;
+padding-left:10%; 
 border: 2px solid #FF0000;
 
 border-radius: 5px; 
 
-font-size: 75%;
+text-align: center;
+font-size: 1vw;
+
 line-height: 100%;
 font-weight: 10;
 color: #16456B;
 }
 
-.form-control-signup::placeholder{
+.form-control-signup-login::placeholder{
+    text-align: center;
+    font-size: 100%;
+    line-height: 100%;
+}
+
+.form-control-signup-password{
+    /* Rectangle 4 */
+    
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 15%;
+    height: 45%;
+    
+    background: white url(./../svg/blue-key.png) no-repeat scroll 1px 1px;
+    padding-left:10%;  
+    border: 2px solid #FF0000;
+    
+    border-radius: 5px; 
+    
+    text-align: center;
+    font-size: 1vw;
+    
+    line-height: 100%;
+    font-weight: 10;
+    color: #16456B;
+    }
+    
+.form-control-signup-password::placeholder{
     text-align: center;
     font-size: 100%;
     line-height: 100%;

@@ -96,7 +96,7 @@ export default class ProfileInfo extends Component {
             <div className={`wrg-toggle ${this.state.is_2fa_enabled ? 'wrg-toggle--checked' : ''}`}>
             <div className="wrg-toggle-container">
             <div className="wrg-toggle-check">
-                <span style={{left: '50%'}}><img src={w_key} style={{height: '200%'}}/></span>
+                <span style={{left: '50%'}}><img src={w_key} alt='key' style={{height: '200%'}}/></span>
             </div>
             <div className="wrg-toggle-uncheck">
                 <span>No</span>

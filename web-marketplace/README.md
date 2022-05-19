@@ -69,19 +69,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-Need to start
-`npm install cors --save`
-`npm install react-router-dom --save`
-`npm i axios`
-`npm i cors`
-`npm install zlib`
-`npm install querystring`
-`npm install path buffer fs stream http`
-
 ```
 chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 ```
-
- ```
- npm install --save-dev express cors
- ```    

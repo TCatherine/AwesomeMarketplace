@@ -1,6 +1,5 @@
 
 import React, {Component} from 'react';
-import {useParams} from "react-router-dom";
 import { toast } from 'react-toastify';
 import './css/image.css'
 import axios from 'axios';
@@ -44,12 +43,13 @@ class Image extends Component {
                 if (error.response.data.Status)
                     out = error.response.data.Status;
                 else 
-                    out = error.response.data.details;
+                    out = error.response.data.detail;
                 toast.error(out, {
                     position: "bottom-right", autoClose: 1000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined,
                 });
             });
+       
     }
 
     render() {
@@ -62,14 +62,14 @@ class Image extends Component {
                         <div className='info-text'>INFORMATION</div>
                         <div className='name'>Name: {this.state.name}</div>
                         <div className='price'>Price: {this.state.price}</div>
-                        {/* <div className='owner'>Owner: {this.state.owner.username}</div> */}
+                        <div className='owner'>Owner: {this.state.owner}</div>
                         <div className='creation-date'>Cration Date: {this.state.creation_date}
                         </div>
                         <div className='update-date'>Update Date: {this.state.last_updated}
                         </div>
                     </div>
                     <button className='button-change'>buy</button>
-                    <img src={this.state.public_path}  className='img'/>
+                    <img src={this.state.public_path} alt='public' className='img'/>
                 </div>
             </form>
         )
@@ -77,10 +77,7 @@ class Image extends Component {
 }
 
 const WrappedImage = props => { 
-    let { Id } = useParams();
     const location = useLocation();
-    // console.log(Id);
-    // console.log(location);
     return <Image data={location.state.data}/> 
 }
 

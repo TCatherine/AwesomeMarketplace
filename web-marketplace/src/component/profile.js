@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import React, {Component} from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './css/profile.css'
 import user from './svg/1.png'
 import axios from 'axios';
@@ -31,7 +31,7 @@ export default class Profile extends Component {
         return (
             <div>
                 <div className='info-user'>
-                <img src={user} className='photo-user'/>
+                <img src={user} alt='User' className='photo-user'/>
                     <ProfileInfo/>
                     <ProfilePassword/>
                 </div>

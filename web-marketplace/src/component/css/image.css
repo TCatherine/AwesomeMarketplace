@@ -209,8 +209,8 @@
 .img-public {
 
     position: absolute;
-    max-width: 35%;
-    max-height: 90%;
+    width: 50%;
+    height: 90%;
     left: 40%;
     top: 3%;
 
@@ -225,8 +225,8 @@
 
 .img-private {
     position: absolute;
-    max-width: 35%;
-    max-height: 90%;
+    width: 50%;
+    height: 50%;
     width: 35%;
     right: 2%;
     bottom: 2%;
@@ -267,10 +267,12 @@
     color: #184870;
 }
 
-.public-img {
-    width: 100%;
+.private-img {
+    max-width: 95%;
+    max-height: 95%;
 }
 
-.private-img {
-    width: 100%;
+.public-img {
+    max-width: 95%;
+    max-height: 95%;
 }

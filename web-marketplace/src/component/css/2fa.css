@@ -20,3 +20,31 @@ left:3%;
     
     color: #FFFFFF;
 }
+
+.form-control-code {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 15%;
+    height: 45%;
+    
+    background: white url(./../svg/blue-2fa.png) no-repeat 1px 1px;
+    background-size: 25px;
+    padding-left:10%; 
+    border: 2px solid #FF0000;
+    
+    border-radius: 5px; 
+    
+    text-align: center;
+    font-size: 1vw;
+    
+    line-height: 100%;
+    font-weight: 10;
+    color: #16456B;
+    }
+    
+.form-control-code::placeholder{
+    text-align: center;
+    font-size: 100%;
+    line-height: 100%;
+}

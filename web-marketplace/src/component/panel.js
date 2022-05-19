@@ -15,7 +15,7 @@ export default class Panel extends Component {
                 </li>
                 <li className='user'>
                   <Link to={"/profile"} className='username'>{this.props.user.username}</Link>
-                  <img src={user} className="user-img"/>
+                  <img src={user} alt='user'className="user-img"/>
                 </li>
               </ul>
         );
@@ -30,7 +30,7 @@ export default class Panel extends Component {
           </li>
           <li className='user'>
             <div  className='username'>Unknown</div>
-          <img src={user} className="user-img"/>
+          <img src={user} alt='user' className="user-img"/>
           </li>
         </ul>
         );

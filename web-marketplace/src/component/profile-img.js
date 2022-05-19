@@ -1,6 +1,5 @@
 
 import React, {Component} from 'react';
-import {useParams} from "react-router-dom";
 import { toast } from 'react-toastify';
 import './css/image.css'
 import axios from 'axios';
@@ -21,6 +20,7 @@ class ProfileImage extends Component {
             last_updated: this.props.data.last_updated,
             public_path: this.props.data.public_path,
             private_path: this.props.data.private_path,
+            image: null,
             sale_button_name:  this.change_button_name(this.props.data.is_sale)
         }
     }
@@ -91,6 +91,20 @@ class ProfileImage extends Component {
             });
     }
 
+    componentDidMount = () => {
+        
+        axios.get(this.state.private_path, { responseType: 'arraybuffer' },)
+      .then(response => {
+        const base64 = btoa(
+          new Uint8Array(response.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            '',
+          ),
+        );
+        this.setState({ image: "data:;base64," + base64 }, ()=>console.log(''));
+      });
+    }
+
     render() {
         return (
             // <form onSubmit={this.changeInfo}>
@@ -118,10 +132,10 @@ class ProfileImage extends Component {
                     <button className='button-sale' onClick={this.handleSubmit}>{this.state.sale_button_name}</button>
                     <div className='img-public'>
                         <div>public</div>
-                        <img src={this.state.public_path}  className='public-img'/>
+                        <img src={this.state.public_path} alt='public' className='public-img' />
                     </div>
                     <div className='img-private'>
-                        <img src={this.state.private_path}  className='private-img'/>
+                        <img src={this.state.image}  alt='private'className='private-img'/>
                         <div>private</div>
                     </div>
                 </div>
@@ -131,10 +145,7 @@ class ProfileImage extends Component {
 }
 
 const WrappedProfileImage = props => {
-    let { Id } = useParams();
     const location = useLocation();
-    // console.log(Id);
-    // console.log(location);
     return <ProfileImage data={location.state.data}/> 
 }
 

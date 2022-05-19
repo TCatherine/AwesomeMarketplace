@@ -1,12 +1,8 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './css/catalog.css'
 import './css/panel.css'
-
-
-import App from '../App'
-import lot from './svg/user-profile.png'
 
 export default class Catalog extends Component {  
     handleSubmit = e => {
@@ -25,8 +21,8 @@ export default class Catalog extends Component {
             batch_num: 0,
             number: 8
         }
-        axios.defaults.headers.common['Authorization'] = null;
-        axios.post('market/images-catalog/', data).then(
+        // axios.defaults.headers.common['Authorization'] = null;
+        axios.post('market/images-catalog/', data, {headers:{ 'Authorization': null}}).then(
             res => {
                 this.setState({
                     entities:  [...res.data.objects]
@@ -39,7 +35,6 @@ export default class Catalog extends Component {
     }
 
     getComponent = (entity, idx) => {
-        var func = (is_sale) => {if (is_sale) return "for sale"; return "not for sale"};
         let data;
         let left_pos;
         let top_pos;
@@ -58,7 +53,7 @@ export default class Catalog extends Component {
                 public_path: entity.public_image,
                 creation_date: entity.creation_date,
                 last_updated: entity.last_updated,
-                owner: this.state.user
+                owner: entity.owner
             }
         }
         else {
@@ -66,7 +61,7 @@ export default class Catalog extends Component {
         }
         return(
             <Link to={{pathname: "/image/"+idx}}  state={{data: data}} className='entity'  style={{top: top_pos, left: left_pos}}>
-                 <img src={data.public_path} className='product-public-img'/>
+                 <img src={data.public_path} alt='public' className='product-public-img'/>
                 <div className='product_name'>Name: {data.name}</div>
                 <div className='product_price'>Price: {data.price}</div>
             </Link>
