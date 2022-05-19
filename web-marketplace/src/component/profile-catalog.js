@@ -11,7 +11,8 @@ export default class ProfileCatalog extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            entities : []
+            entities : [],
+            images: []
         }
     }
     
@@ -20,6 +21,24 @@ export default class ProfileCatalog extends Component {
             user: user
           });
         }
+
+    getImage(ent) {
+        axios.get(ent.private_path, { responseType: 'arraybuffer' },)
+        .then(response => {
+            console.log('Query is okey!');
+            const base64 = btoa(
+            new Uint8Array(response.data).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                '',),);
+            const image = "data:;base64," + base64;
+            this.setState({
+                images:[...this.state.images, image]
+                });
+        },
+        err => {
+        return null;
+        });
+    }
 
     componentDidMount = () => {
         axios.get('auth/user/').then(
@@ -34,8 +53,10 @@ export default class ProfileCatalog extends Component {
                 this.setState({
                     entities:  [...res.data.objects]
                   });
+
+                res.data.objects.map((ent) => this.getImage(ent));
             },
-            err => { 
+            err => {
                 console.log(err);
             });
     }
@@ -52,18 +73,7 @@ export default class ProfileCatalog extends Component {
         top_pos = k*50+ '%';
 
 
-        if (entity!==undefined){
-            axios.get(this.state.private_path, { responseType: 'arraybuffer' },)
-            .then(response => {
-                const base64 = btoa(
-                new Uint8Array(response.data).reduce(
-                    (data, byte) => data + String.fromCharCode(byte),
-                    '',
-                ),
-                );
-                this.setState({ image: "data:;base64," + base64 }, ()=>console.log());
-            });
-            
+        if (entity!==undefined){     
             data = {
                 id: entity.id,
                 name:entity.name ,
@@ -75,8 +85,9 @@ export default class ProfileCatalog extends Component {
                 creation_date: entity.creation_date,
                 last_updated: entity.last_updated,
                 owner: this.state.user,
-                image: this.state.image
+                image: this.state.images[idx]
             }
+            // console.log(this.state.images);
         }
         else {
             data = { }
@@ -90,10 +101,10 @@ export default class ProfileCatalog extends Component {
                     <img src={data.public_path} alt='private' className='entity-public-img'/>
                     <div  className='entity-public-text'>public</div>
                 </div>
-                <div className='entity-private'>
-                    <img src={data.image} alt='public' className='entity-public-img'/>
+                {/* <div className='entity-private'>
+                    <img src={this.state.images[idx]} alt='private' className='entity-public-img'/>
                     <div  className='entity-public-text'>private</div>
-                </div>
+                </div> */}
             </Link>
         );
     }

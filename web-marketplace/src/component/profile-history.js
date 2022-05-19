@@ -19,7 +19,7 @@ export default class ProfileHistory extends Component {
             res => {
                 this.setState({user: res.data}, ()=> console.log(res.data));
                 console.log(res.data);
-                const url = 'market/user-transactions/' + this.state.user.id + '/';
+                const url = 'market/user-transactions/' + res.data.id + '/';
                 axios.get(url).then(
                     res => {
                         this.setState({

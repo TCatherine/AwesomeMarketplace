@@ -113,10 +113,10 @@ export default class ImageAdditor extends Component {
                         </label>
                     </div>  
                      <div className='upload_public_img'>
-                            <img src={this.state.preview_public_image} alt='public' max-height="100%" max-width="100%"/>
+                            <img src={this.state.preview_public_image} max-height="100%" max-width="100%"/>
                     </div>
                     <div className='upload_private_img'>
-                            <img src={this.state.preview_private_image} alt='private' max-height="100%" max-width="100%"/>
+                            <img src={this.state.preview_private_image} max-height="100%" max-width="100%"/>
                     </div>
                  </div>
         )

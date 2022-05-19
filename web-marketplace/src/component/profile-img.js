@@ -92,6 +92,7 @@ class ProfileImage extends Component {
     }
 
     componentDidMount = () => {
+        
         axios.get(this.state.private_path, { responseType: 'arraybuffer' },)
       .then(response => {
         const base64 = btoa(
@@ -100,7 +101,7 @@ class ProfileImage extends Component {
             '',
           ),
         );
-        this.setState({ image: "data:;base64," + base64 });
+        this.setState({ image: "data:;base64," + base64 }, ()=>console.log(''));
       });
     }
 
@@ -131,10 +132,10 @@ class ProfileImage extends Component {
                     <button className='button-sale' onClick={this.handleSubmit}>{this.state.sale_button_name}</button>
                     <div className='img-public'>
                         <div>public</div>
-                        <img src={this.state.public_path} alt='public' className='public-img' style={"max-width: 100%;max-height: 100%;"}/>
+                        <img src={this.state.public_path} alt='public' className='public-img'/>
                     </div>
                     <div className='img-private'>
-                        <img src={this.state.image}  alt='private'className='private-img' style={"max-width: 100%;max-height: 100%;"}/>
+                        <img src={this.state.image}  alt='private'className='private-img'/>
                         <div>private</div>
                     </div>
                 </div>
