@@ -18,6 +18,9 @@ class SellableObject(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default="")
     is_sale = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.name} ({self.id})"
+
 
 class ImageObject(SellableObject):
     public_image = models.ImageField(upload_to='public_images/', null=True, max_length=300)
