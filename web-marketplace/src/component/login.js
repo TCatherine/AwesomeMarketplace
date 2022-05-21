@@ -72,7 +72,7 @@ export default class Login extends Component {
 
     render() {
         if (this.state.loggedIn) {
-            return <Navigate to={'/'} state={{loggedIn: true}}/>;
+            return <Navigate to={'/'}/>;
         }
         if (this.state.is_2fa) {
             return <Navigate to={'/2fa'}/>;
