@@ -10,6 +10,7 @@ services:
         - 80:80
     volumes:
         - ./docker/nginx/development:/etc/nginx/conf.d
+        - ./docker/nginx/include:/etc/nginx/conf.d/include
         - static_volume:/usr/src/marketplace/django_static
         - media_volume:/usr/src/marketplace/store
     depends_on: 
