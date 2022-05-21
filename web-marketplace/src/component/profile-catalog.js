@@ -22,23 +22,23 @@ export default class ProfileCatalog extends Component {
           });
         }
 
-    getImage(ent) {
-        axios.get(ent.private_path, { responseType: 'arraybuffer' },)
-        .then(response => {
-            console.log('Query is okey!');
-            const base64 = btoa(
-            new Uint8Array(response.data).reduce(
-                (data, byte) => data + String.fromCharCode(byte),
-                '',),);
-            const image = "data:;base64," + base64;
-            this.setState({
-                images:[...this.state.images, image]
-                });
-        },
-        err => {
-        return null;
-        });
-    }
+    // getImage(ent) {
+    //     axios.get(ent.private_path, { responseType: 'arraybuffer' },)
+    //     .then(response => {
+    //         console.log('Query is okey!');
+    //         const base64 = btoa(
+    //         new Uint8Array(response.data).reduce(
+    //             (data, byte) => data + String.fromCharCode(byte),
+    //             '',),);
+    //         const image = "data:;base64," + base64;
+    //         this.setState({
+    //             images:[...this.state.images, image]
+    //             });
+    //     },
+    //     err => {
+    //     return null;
+    //     });
+    // }
 
     componentDidMount = () => {
         axios.get('auth/user/').then(
@@ -54,7 +54,7 @@ export default class ProfileCatalog extends Component {
                     entities:  [...res.data.objects]
                   });
 
-                res.data.objects.map((ent) => this.getImage(ent));
+                // res.data.objects.map((ent) => this.getImage(ent));
             },
             err => {
                 console.log(err);

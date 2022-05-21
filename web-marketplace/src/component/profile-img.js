@@ -92,8 +92,11 @@ class ProfileImage extends Component {
     }
 
     componentDidMount = () => {
+        // const agent = new https.Agent({  
+        //     rejectUnauthorized: false
+        //   });
         
-        axios.get(this.state.private_path, { responseType: 'arraybuffer' },)
+        axios.get(this.state.private_path, { responseType: 'arraybuffer',  },)
       .then(response => {
         const base64 = btoa(
           new Uint8Array(response.data).reduce(
