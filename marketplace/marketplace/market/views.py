@@ -74,12 +74,12 @@ class ChangeStatusView(generics.UpdateAPIView):
     serializer_class = ChangeStatusSerializer
 
 
-class DealView(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request, pk):
-        # redirect to view from blockchain app
-        return redirect('do deal', pk=pk)
+# class DealView(APIView):
+#     permission_classes = (IsAuthenticated,)
+#
+#     def get(self, request, pk):
+#         # redirect to view from blockchain app
+#         return redirect('do deal', pk=pk)
 
 
 class UserTransactionsView(APIView):
