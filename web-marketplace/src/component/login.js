@@ -50,7 +50,6 @@ export default class Login extends Component {
             res => {
                 this.setState({loggedIn: true},()=> {console.log(true)});
                 localStorage.setItem('access', res.data.access);
-                window.location.reload();
                 console.log(res.data);
                 console.log(localStorage.getItem('access'));
                 }

@@ -41,13 +41,11 @@ export default class Authentication extends Component {
                 })
             }
         )
-
     }
 
 
     render() {
         if (this.state.isCorrect) {
-            window.location.reload();
             return <Navigate to={'/'} state={{loggedIn: true}}/>;
         }
         return (
