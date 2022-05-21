@@ -89,7 +89,7 @@ class GetChainView(APIView):
 class DealView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, pk):
+    def post(self, request, pk):
         # creating sellable object with apply async and check callback works
         buyer_id = request.user.id
         # item_id = request.data["item_id"]
