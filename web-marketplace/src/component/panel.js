@@ -11,7 +11,7 @@ export default class Panel extends Component {
         auth_code = (
               <ul>
                 <li className='sign-up'>
-                <Link to={'/'} onClick={() => {localStorage.clear()}} className='link'>logout</Link>
+                <Link to={'/'} onClick={() => {localStorage.clear(); window.location.reload();}} className='link'>logout</Link>
                 </li>
                 <li className='user'>
                   <Link to={"/profile"} className='username'>{this.props.user.username}</Link>

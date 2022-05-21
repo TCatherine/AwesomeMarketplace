@@ -50,6 +50,7 @@ export default class Login extends Component {
             res => {
                 this.setState({loggedIn: true},()=> {console.log(true)});
                 localStorage.setItem('access', res.data.access);
+                window.location.reload();
                 console.log(res.data);
                 console.log(localStorage.getItem('access'));
                 }
@@ -72,8 +73,7 @@ export default class Login extends Component {
 
     render() {
         if (this.state.loggedIn) {
-            window.location.reload();
-            return <Navigate to={'/'}/>;
+            return <Navigate to={'/'} state={{loggedIn: true}}/>;
         }
         if (this.state.is_2fa) {
             return <Navigate to={'/2fa'}/>;
