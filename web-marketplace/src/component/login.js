@@ -72,7 +72,6 @@ export default class Login extends Component {
 
     render() {
         if (this.state.loggedIn) {
-            window.location.reload();
             return <Navigate to={'/'}/>;
         }
         if (this.state.is_2fa) {

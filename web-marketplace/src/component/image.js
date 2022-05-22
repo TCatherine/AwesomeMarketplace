@@ -27,7 +27,7 @@ class Image extends Component {
         e.preventDefault();
 
         let url = 'market/imageobject/' + this.state.id + '/deal/';
-        axios.get(url).then(
+        axios.post(url).then(
             res => {
                     console.log(res);
                 toast.success('Transaction initiated', {
