@@ -53,7 +53,7 @@ CORS_ALLOW_CREDENTIALS = True
 #     "https://awesomewebmarketplace.ru"
 # ]
 
-CSRF_TRUSTED_ORIGINS = ['https://awesomewebmarketplace.ru']
+CSRF_TRUSTED_ORIGINS = ['https://awesomewebmarketplace.ru', 'https://51.250.104.227']
 
 
 # Application definition
