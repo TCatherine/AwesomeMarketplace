@@ -12,6 +12,7 @@ services:
     volumes:
         - ./docker/nginx/production:/etc/nginx/conf.d
         - ./docker/nginx/certs:/etc/ssl/certs
+        - ./docker/nginx/include:/etc/nginx/conf.d/include
         - static_volume:/usr/src/marketplace/django_static
         - media_volume:/usr/src/marketplace/store
     depends_on: 

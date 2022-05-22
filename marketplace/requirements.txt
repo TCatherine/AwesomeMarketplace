@@ -7,3 +7,4 @@ redis~=4.2.0
 eventlet~=0.33.0
 pillow~=9.0.1
 django-cors-headers~=3.11.0
+django-csp~=3.7
